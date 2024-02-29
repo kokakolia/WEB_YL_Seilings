@@ -1,21 +1,25 @@
-.zag {
+.my-header {
     color: #86B6F6;
     padding-left: 25px;
-    padding-top: 30px;
+    padding-top: 10px;
 }
 
+.my-main-menu {
+    padding-top: 30px;
+    padding-left: 70px;
+}
 
-.zag2 {
+.my-header-2 {
     text-align: right;
     padding-right: 25px;
-    padding-top: 20px;
+    padding-top: 15px;
 }
 
 .header {
-    padding-bottom: 40px;
+    padding-bottom: 35px;
 }
 
-.vtoraia {
+.my-second-section {
     padding-left: 20px;
     padding-right: 20px;
     padding-bottom: 270px;
@@ -33,7 +37,12 @@
     color: gray;
 }
 
-.third-scene {
+.my-third-section {
     padding-top: 100px;
     padding-bottom: 200px;
+}
+
+.who-we-are-text {
+    padding-bottom: 30px;
+    padding-top: 30px;
 }
