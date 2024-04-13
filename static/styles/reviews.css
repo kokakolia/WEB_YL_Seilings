@@ -1,0 +1,61 @@
+.header {
+    padding-top: 30px;
+}
+
+.navig-options a, .header a {
+    text-decoration: none;
+    color: #5C8374;
+    position: relative;
+}
+
+.navig {
+    padding-bottom: 35px;
+    margin-left: 10px;
+}
+
+.navig-options {
+    padding-top: 35px;
+}
+
+.navig-options a:after {
+    content: "";
+    display: block;
+    width: 30pt;
+    height: 5px;
+    background-color: #1B4242;
+    position: absolute;
+    bottom: -5px;
+    border-radius: 5px;
+    left: 0;
+    right: 0;
+}
+.navig-options a.option-1:after {
+    width: 30pt;
+    transform: translateX(60%);
+}
+.navig-options a.option-2:after {
+    width: 30pt;
+    transform: translateX(100%);
+}
+.navig-options a.option-3:after {
+    width: 30pt;
+    transform: translateX(60%);
+}
+
+.navig-options a.active-option:after {
+    width: 75pt;
+    transform: translateX(8%);
+}
+
+body {
+    background-color: #9EC8B9;
+}
+
+
+.review {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin-bottom: 25px;
+    background-color: antiquewhite;
+    border-radius: 50px;
+}
