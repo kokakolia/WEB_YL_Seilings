@@ -51,11 +51,78 @@ body {
     background-color: #9EC8B9;
 }
 
-
 .review {
-    padding-top: 50px;
-    padding-bottom: 50px;
-    margin-bottom: 25px;
-    background-color: antiquewhite;
-    border-radius: 50px;
+  padding: 10px;
+  margin-left: 150px;
+  margin-right: 150px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  border-radius: 20px;
+  background-color: darksalmon;
+
+  /* width: 90%; */
+  height: 150px;
+  display: flex;
+  overflow: hidden;
+
+  &>* {
+      height: 100%;
+  }
+  /* max-width: 500px; */
 }
+
+.review .text {
+    margin-left: 20px;
+    font-family: monospace;
+  font-size: 1rem;
+  color: white;
+  height: 100%;
+  /* max-width: 50%; */
+  
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+}
+
+img {
+    min-width: 0;
+    min-height: 0;
+  object-fit: cover;
+  border: 1px solid white;
+}
+
+.review .images {
+    display: flex;
+  flex-shrink: 0;
+  width: 100%px;
+  gap: 4px;
+  /* margin-left: 50%; */
+  margin: auto, auto;
+  /* margin-right: 50%; */
+
+  img {
+      width: 100%;
+      height: 100%;
+      border-radius: 4px;
+  }
+  .small-images {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+    gap: 4px;
+
+    img {
+        height: 100%;
+    }
+  }
+  .small-images:not(:has(img)) {
+    width: 0%;
+  }
+}
+
+/* .modal {
+    align-self: center;
+} */

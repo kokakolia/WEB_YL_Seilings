@@ -19,14 +19,58 @@
             <div class="col-sm-6 col-lg-2 h3 navig-options text-center"><a class="option-3" href="/order">заказ</a></div>
         </div>
     </div>
-
     {% for review in reviews %}
-        <div class="container review">
-            <div class="row">
-                <div class="col-6 text-center">Text</div>
-                <div class="col-6 text-center">Img</div>
+        <div class="review">
+            <div class="text">
+                {{ review["text"] }}
+            </div>
+            {% set id_block = loop.index %}
+            {% if review["images"]|length > 0 %}
+            <div class="images">
+                <img src={{review["images"][1]}} alt="" onclick="showImage(this.id)" id="{{loop.index}}_{{1}}">
+            {% endif %}
+            {% if review["images"]|length > 1 %}
+                <div class="small-images">
+                    {% for img in review["images"] %}
+                        {% if loop.index > 1 %}
+                            <img src={{img}} alt="бебе" id="{{ id_block }}_{{loop.index}}" onclick="showImage(this.id)">
+                        {% endif %} 
+                    {% endfor %}
+                </div>  
+            {% endif %}
             </div>
         </div>
     {% endfor %}
+
+    
+
+      <div class="modal" tabindex="-1" id="modalWithImages">
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="btn-close" onclick="closeImage()" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div id="carouselExample" class="carousel slide">
+                <div class="carousel-inner" id="carouselImages">
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script src="static/script/script.js"></script>
 </body>
 </html>

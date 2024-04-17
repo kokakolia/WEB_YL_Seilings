@@ -56,14 +56,14 @@ body {
 .main-section {
     width: 100%;
     height: 100%;
-    padding-left: 25px;
-    padding-right: 25px;
-    padding-bottom: 180.5px;
-    padding-top: 100px;
+    padding-left: 28pt;
+    padding-right: 28pt;
+    padding-bottom: 135.5pt;
+    padding-top: 75pt;
     background: url(../img/fon_page-0001.jpg), #1B4242;
     text-align: center;
-    border-radius: 70px;
-    background-size: contain;
+    border-radius: 60pt;
+    background-size: cover;
 }
 
 .main-section-header {
