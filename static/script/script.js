@@ -28,10 +28,13 @@ function showImage(id) {
         let new_image = document.createElement("img");
         new_image.src = srces[i];
         new_image.classList.add("d-block");
+        
 
 
-        new_image.style.width = "700pt";
-        new_image.style.height = "400pt";
+        new_image.style.width = "600pt";
+        new_image.style.height = "300pt";
+        new_image.style.margin = 'auto';
+
 
         new_item.appendChild(new_image);
         carouselImages.appendChild(new_item);
