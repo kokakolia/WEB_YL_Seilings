@@ -19,11 +19,14 @@
             <div class="col-sm-6 col-lg-2 h3 navig-options text-center"><a class="option-3" href="/order">заказ</a></div>
         </div>
     </div>
+
+
     {% for review in reviews %}
         <div class="review">
-            <div class="text">
+            <div class="text" style="width: 50%;">
                 {{ review["text"] }}
             </div>
+            
             {% set id_block = loop.index %}
             {% if review["images"]|length > 0 %}
             <div class="images">

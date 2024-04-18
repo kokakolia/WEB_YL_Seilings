@@ -72,21 +72,20 @@ body {
 }
 
 .review .text {
+    overflow-wrap: break-word;
     margin-left: 20px;
+    max-width: 80%;
     font-family: monospace;
   font-size: 1rem;
   color: white;
   height: 100%;
-  /* max-width: 50%; */
-  
-  text-overflow: ellipsis;
-  overflow: hidden;
+
   display: -webkit-box;
   -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;
 }
 
-img {
+.review img {
     min-width: 0;
     min-height: 0;
   object-fit: cover;
@@ -98,9 +97,7 @@ img {
   flex-shrink: 0;
   width: 100%px;
   gap: 4px;
-  /* margin-left: 50%; */
-  margin: auto, auto;
-  /* margin-right: 50%; */
+
 
   img {
       width: 100%;
@@ -122,7 +119,3 @@ img {
     width: 0%;
   }
 }
-
-/* .modal {
-    align-self: center;
-} */
