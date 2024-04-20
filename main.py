@@ -6,7 +6,7 @@ app = Flask(__name__, template_folder='static/templates')
 @app.route('/')
 @app.route('/about')
 def about():
-    return open('static/templates/about.html', encoding='utf8')
+    return render_template('about.html', encoding='utf8')
 
 
 @app.route('/reviews')

@@ -44,7 +44,8 @@
 
 .navig-options a.active-option:after {
     width: 75pt;
-    transform: translateX(8%);
+    /* transform: translateX(8%); */
+    transform: translateX(-5%);
 }
 
 body {

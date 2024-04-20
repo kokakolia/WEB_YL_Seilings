@@ -54,3 +54,41 @@ function closeImage() {
     modal.style.display = 'none';
     
 }
+
+function trackLoadPage() {
+
+    const currentPage = window.location.href;
+
+    let cur_option = ''
+
+    if (currentPage === "http://127.0.0.1:8080/reviews") {
+        cur_option = 'option-2';
+    } 
+
+    else if (currentPage == 'http://127.0.0.1:8080/about'){
+        cur_option = 'option-1';
+    }
+
+    const referrerPage = document.referrer || 'NO';
+    if (referrerPage != 'NO'){
+        let old_option = '';
+
+        if (referrerPage == 'http://127.0.0.1:8080/about'){
+            old_option = 'option-1';
+        } 
+        else if (referrerPage == 'http://127.0.0.1:8080/reviews'){
+            old_option = 'option-2';
+        }
+        const oldpage_option = document.getElementById(old_option);
+        oldpage_option.classList.remove('active-option');
+        
+    }
+    
+    const curpage_option = document.getElementById(cur_option);
+    curpage_option.classList.add('active-option');
+    
+}
+
+window.onload = function() {
+    trackLoadPage();
+}
