@@ -61,11 +61,11 @@ function trackLoadPage() {
 
     let cur_option = ''
 
-    if (currentPage === "http://127.0.0.1:8080/reviews") {
+    if (currentPage == "http://127.0.0.1:8080/reviews") {
         cur_option = 'option-2';
     } 
 
-    else if (currentPage == 'http://127.0.0.1:8080/about'){
+    else if (currentPage == 'http://127.0.0.1:8080/about' || currentPage == 'http://127.0.0.1:8080/'){
         cur_option = 'option-1';
     }
 
