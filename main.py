@@ -27,7 +27,6 @@ def register():
     if request.method == 'GET':
         return render_template('register.html')
     elif request.method == 'POST':
-        print(datetime.datetime.strptime(request.form['b_day'], '%Y-%m-%d').date())
         user = User()
         user.name = request.form['name']
         user.surname = request.form['surname']
@@ -39,7 +38,6 @@ def register():
         db_sess.add(user)
         db_sess.commit()
         return 'Ok'
-
 
 if __name__ == '__main__':
     main()

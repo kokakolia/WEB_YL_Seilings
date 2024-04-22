@@ -1,0 +1,34 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.row > div > div > *{
+    display: block;
+}
+
+.sex {
+    display: flex;
+    flex-direction: row;
+}
+
+.reg_form > .btn {
+    margin-top: 10px;
+    background-color: #5C8374;
+    color: black;
+    align-self: center;
+}
+
+.reg_form > * {
+    display: flex;
+    flex-direction: row;
+    margin: 10px 10px;
+    align-items: center;
+    justify-items: center;
+}
+
+.reg_form > div > label {
+    margin-right: 10px;
+}
