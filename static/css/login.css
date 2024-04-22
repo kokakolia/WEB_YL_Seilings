@@ -1,0 +1,27 @@
+.btn {
+    color: var(--bs-white);
+    background-color: #5C8374;
+    max-width: 200px;
+    margin: 0 auto;
+}
+
+p {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+}
+
+.form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    min-width: 400px;
+} 
+
+.reg {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
