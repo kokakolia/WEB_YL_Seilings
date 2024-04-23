@@ -93,7 +93,7 @@ body {
   margin-bottom: 30px;
   margin-top: 30px;
   border-radius: 20px;
-  background-color: #D9D9D9;
+  background-color: #d9d9d9;
 
   /* width: 90%; */
   height: 150px;
@@ -163,48 +163,68 @@ body {
 
 .order-container {
   width: 60%;
-  border: 3px solid black;
+  border: 2px solid black;
   border-radius: 9px;
   margin-left: auto;
   margin-right: auto;
 }
 
 .order-container > .small-section > .row > .col-6 > input {
-  width: 40px;
+  width: 80px;
   border-radius: 9px;
   border: 1.4px;
-  margin-left: 20px;
+  text-align: center;
+  margin-left: 30px;
+  margin-top: 15px;
 }
 
 .order-container > .small-section {
   margin-top: 20px;
 }
 
-.order-container > .small-section > .row > .col-6 > input {
-  margin-top: 15px;
+#order-width-input {
+  margin-top: 9px;
+}
+
+#order-length-input {
+  margin-top: 5px;
+}
+
+#order-lamp-input {
+  margin-top: 28px;
 }
 
 #order-select-material {
   border-radius: 10px;
-  width: 250px;
+  width: 287px;
   height: 40px;
   text-align: center;
   margin-top: 15px;
+  margin-right: 29px;
 }
 
 .order-color-radio {
-    display: none;
+  display: none;
 }
 
 .order-color-label {
-    width: 30px;
-    height: 30px;
-    border-radius: 5px;
-    margin-right: 10px;
-    cursor: pointer;
-    border: 2px solid transparent;
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  margin-right: 10px;
+  cursor: pointer;
+  border: 2px solid transparent;
 }
 
 .order-color-label.selected {
-    border-color: black;
+  border-color: black;
+}
+
+
+.order-container > .small-section > .row > .h2 {
+  margin-bottom: 20px;
+}
+
+#order-price {
+  margin-bottom:50px;
 }

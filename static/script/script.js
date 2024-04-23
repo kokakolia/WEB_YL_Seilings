@@ -94,6 +94,17 @@ colorRadios.forEach((radio) => {
       label.classList.remove("selected");
     });
     this.nextElementSibling.classList.add("selected");
-    console.log("Выбран цвет:", this.value);
   });
 });
+
+
+function showPrice(){
+  const width = document.getElementById('order-width-input').value;
+  const length = document.getElementById('order-length-input').value;
+  const lamp = document.getElementById('order-lamp-input').value;
+
+  const price = document.getElementById('order-price');
+  let cost = Number(width) + Number(length) + Number(lamp);
+  price.innerHTML = `Итого ${ cost }&#8381`;
+  // console.log(price, price.value);
+}

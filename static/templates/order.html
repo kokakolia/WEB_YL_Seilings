@@ -1,5 +1,6 @@
 {% extends "base.html" %} {% block content %}
-<div class="order-container container text-center">
+<div class="order-page text-center">
+<div class="order-container container "style="margin-bottom: 30px;">
   <div class="small-section">
     <div class="row"><div class="h2 col">Размер</div></div>
 
@@ -8,7 +9,7 @@
         <div class="text text-start" style="margin-left: 155px">ширина</div>
       </div>
       <div class="col-6 text-start">
-        <input style="margin-top: 9px; margin-left: 30px" type="text" />
+        <input oninput="showPrice()"  placeholder="0" id="order-width-input" type="text" />
       </div>
     </div>
 
@@ -17,7 +18,7 @@
         <div class="text text-start" style="margin-left: 155px">длина</div>
       </div>
       <div class="col-6 text-start">
-        <input style="margin-top: 5px; margin-left: 30px" type="text" />
+        <input oninput="showPrice()" placeholder="0" id="order-length-input" type="text" />
       </div>
     </div>
   </div>
@@ -33,7 +34,7 @@
         </div>
       </div>
       <div class="col-6 text-start">
-        <input style="margin-top: 28px; margin-left: 30px" type="text" />
+        <input oninput="showPrice()" placeholder="0" id="order-lamp-input" type="text" />
       </div>
     </div>
   </div>
@@ -51,12 +52,12 @@
     </div>
   </div>
 
-  <div class="small-section">
+  <div class="small-section" style="margin-bottom: 20px;">
     <div class="row">
-      <div class="col h2">Цвет</div>
+      <div class="col h2" style="margin-left: -10px;">Цвет</div>
     </div>
     <div class="row">
-      <div class="col-4 text-end" style="padding-right: 0;">
+      <div class="col-4 text-end" style="padding-right: 0;margin-left: -15px;">
           <input type="radio" name="colors" id="red-button" value="red" class="order-color-radio"/>
           <label for="red-button" style="background-color: #FFC9C9;" class="order-color-label"></label>
       </div>
@@ -87,7 +88,8 @@
     </div>
   </div>
 </div>
-<div class="h2">Итого {{ price }}&#8381;</div>
+<div class="h2" id="order-price">Итого 0 &#8381;</div>
 
-<button type="button" class="btn btn-primary">Заказать</button>
+<button type="button" class="btn btn-primary" style="margin-bottom:100px;width:220px;height:60px;font-size: large;">Заказать</button>
+</div>
 {% endblock %}

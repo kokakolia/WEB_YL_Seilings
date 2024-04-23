@@ -12,7 +12,7 @@ app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 
 def main():
     db_session.global_init('db/userdata.db')
-    app.run(port=5500, host='127.0.0.1')
+    app.run(port=8080, host='127.0.0.1')
 
 
 @app.route('/')
@@ -43,7 +43,7 @@ def reviews():
 
 @app.route('/order')
 def order():
-    return render_template('order.html', encoding='utf8', price=999999)
+    return render_template('order.html', encoding='utf8')
 
 
 @app.route('/login', methods=['GET', 'POST'])
