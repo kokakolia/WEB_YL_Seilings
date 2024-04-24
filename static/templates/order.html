@@ -1,5 +1,6 @@
 {% extends "base.html" %} {% block content %}
 <div class="order-page text-center">
+<form method="post">
 <div class="order-container container "style="margin-bottom: 30px;">
   <div class="small-section">
     <div class="row"><div class="h2 col">Размер</div></div>
@@ -9,7 +10,7 @@
         <div class="text text-start" style="margin-left: 155px">ширина</div>
       </div>
       <div class="col-6 text-start">
-        <input oninput="showPrice()"  placeholder="0" id="order-width-input" type="text" />
+        <input oninput="showPrice()" name="width" placeholder="0" id="order-width-input" type="text" />
       </div>
     </div>
 
@@ -18,7 +19,7 @@
         <div class="text text-start" style="margin-left: 155px">длина</div>
       </div>
       <div class="col-6 text-start">
-        <input oninput="showPrice()" placeholder="0" id="order-length-input" type="text" />
+        <input oninput="showPrice()" name="length" placeholder="0" id="order-length-input" type="text" />
       </div>
     </div>
   </div>
@@ -34,7 +35,7 @@
         </div>
       </div>
       <div class="col-6 text-start">
-        <input oninput="showPrice()" placeholder="0" id="order-lamp-input" type="text" />
+        <input oninput="showPrice()" name="lamps" placeholder="0" id="order-lamp-input" type="text" />
       </div>
     </div>
   </div>
@@ -44,7 +45,7 @@
 
     <div class="row">
       <div class="col">
-        <select id="order-select-material">
+        <select name="material" id="order-select-material">
           <option value="1">Матовый</option>
           <option value="2">Глянцевый</option>
         </select>
@@ -82,14 +83,15 @@
           <label for="purple-button" style="background-color: #D0BFFF;" class="order-color-label"></label>
       </div>
       <div class="col-1">
-          <input type="radio" name="colors" id="peach-button" value="peach" class="order-color-radio"/>
-          <label for="peach-button" style="background-color: #EADDD7;" class="order-color-label"></label>
+          <input type="radio" name="colors" id="pink-button" value="peach" class="order-color-radio"/>
+          <label for="pink-button" style="background-color: #EADDD7;" class="order-color-label"></label>
       </div>
     </div>
   </div>
 </div>
 <div class="h2" id="order-price">Итого 0 &#8381;</div>
 
-<button type="button" class="btn btn-primary" style="margin-bottom:100px;width:220px;height:60px;font-size: large;">Заказать</button>
+<button type="submit" class="btn btn-primary" style="margin-bottom:100px;width:220px;height:60px;font-size: large;">Заказать</button>
+</form>
 </div>
 {% endblock %}

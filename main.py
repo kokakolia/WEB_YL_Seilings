@@ -4,6 +4,7 @@ import datetime
 from loginform import LoginForm
 from data import db_session
 from data.users import User
+from bot import bot_send_order
 
 
 app = Flask(__name__, template_folder='static/templates')
@@ -41,9 +42,15 @@ def reviews():
     return render_template('reviews.html', encoding='utf8', reviews=reviews)
 
 
-@app.route('/order')
+@app.route('/order', methods=['GET', 'POST'])
 def order():
-    return render_template('order.html', encoding='utf8')
+    if request.method == 'GET':
+        return render_template('order.html', encoding='utf8')
+    else:
+        materials = {'2': 'Глянцевый', '1': 'Матовый'}
+        colors = {'red': 'красный', 'green': 'зелёный', 'blue': 'синий', 'yellow': 'жёлтый', 'purple': 'фиолетовый', 'pink': 'розовый'}
+        bot_send_order(request.form['width'], request.form['length'], materials[request.form['material']], request.form['lamps'], colors[request.form['colors']])
+        return redirect('/')
 
 
 @app.route('/login', methods=['GET', 'POST'])
