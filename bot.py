@@ -3,7 +3,7 @@ from telegram.ext import Updater
 import logging
 import asyncio
 
-bot_token = '7138077828:AAGgZqIlWRAy8rUmD3qthDQR-3zBZrvJ7-w'
+bot_token = ''
 
 chat_id = '842504537'
 
