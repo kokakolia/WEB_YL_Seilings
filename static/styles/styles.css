@@ -75,6 +75,7 @@ body {
   text-align: center;
   border-radius: 60pt;
   background-size: cover;
+  margin-bottom: 60px;
 }
 
 .main-section-header {
@@ -86,6 +87,24 @@ body {
   color: #9ec8b9;
 }
 
+
+.what-we-believe-text {
+  color: #5c8374;
+  margin-top: 40px;
+}
+
+.about-section {
+  margin-top: 70px;
+  margin-bottom: 50px;
+}
+
+
+#who-we-are-img {
+  width: 90%;
+  height: 40%;
+  border-radius: 30px;
+}
+
 .review {
   padding: 10px;
   margin-left: 150px;
@@ -93,7 +112,7 @@ body {
   margin-bottom: 30px;
   margin-top: 30px;
   border-radius: 20px;
-  background-color: #d9d9d9;
+  background-color:rgb(155, 200, 207);
 
   /* width: 90%; */
   height: 150px;
@@ -112,7 +131,7 @@ body {
   max-width: 80%;
   font-family: monospace;
   font-size: 1rem;
-  color: white;
+  color:#5c8374;
   height: 100%;
 
   display: -webkit-box;
