@@ -1,0 +1,70 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.row > div > div > *{
+    display: block;
+}
+
+.sex {
+    display: flex;
+    flex-direction: row;
+}
+
+.reg_form > .btn {
+    margin-top: 10px;
+    background-color: #5C8374;
+    color: black;
+    align-self: center;
+}
+
+.reg_form > * {
+    display: flex;
+    flex-direction: row;
+    margin: 10px 10px;
+    align-items: center;
+    justify-items: center;
+}
+
+.reg_form > div > label {
+    margin-right: 10px;
+}
+
+.btn {
+    color: var(--bs-white);
+    background-color: #5C8374;
+    max-width: 200px;
+    margin: 0 auto;
+}
+
+p {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+}
+
+.form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    min-width: 400px;
+} 
+
+.reg {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.main-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column;
+}
+

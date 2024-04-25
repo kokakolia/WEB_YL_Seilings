@@ -1,0 +1,97 @@
+{% extends "base.html" %} {% block content %}
+<div class="order-page text-center">
+<form method="post">
+<div class="order-container container "style="margin-bottom: 30px;">
+  <div class="small-section">
+    <div class="row"><div class="h2 col">Размер</div></div>
+
+    <div class="row width">
+      <div class="h3 col-6">
+        <div class="text text-start" style="margin-left: 155px">ширина</div>
+      </div>
+      <div class="col-6 text-start">
+        <input oninput="showPrice()" name="width" placeholder="0" id="order-width-input" type="text" />
+      </div>
+    </div>
+
+    <div class="row length">
+      <div class="h3 col-6">
+        <div class="text text-start" style="margin-left: 155px">длина</div>
+      </div>
+      <div class="col-6 text-start">
+        <input oninput="showPrice()" name="length" placeholder="0" id="order-length-input" type="text" />
+      </div>
+    </div>
+  </div>
+
+  <div class="small-section">
+    <div class="row"><div class="h2 col">Опции</div></div>
+
+    <div class="row lamps">
+      <div class="h3 col-6">
+        <div class="text text-start" style="margin-left: 155px">
+          кол-во <br />
+          ламп
+        </div>
+      </div>
+      <div class="col-6 text-start">
+        <input oninput="showPrice()" name="lamps" placeholder="0" id="order-lamp-input" type="text" />
+      </div>
+    </div>
+  </div>
+
+  <div class="small-section">
+    <div class="row"><div class="h2 col">Материал</div></div>
+
+    <div class="row">
+      <div class="col">
+        <select name="material" id="order-select-material">
+          <option value="1">Матовый</option>
+          <option value="2">Глянцевый</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="small-section" style="margin-bottom: 20px;">
+    <div class="row">
+      <div class="col h2" style="margin-left: -10px;">Цвет</div>
+    </div>
+    <div class="row">
+      <div class="col-4 text-end" style="padding-right: 0;margin-left: -15px;">
+          <input type="radio" name="colors" id="red-button" value="red" class="order-color-radio"/>
+          <label for="red-button" style="background-color: #FFC9C9;" class="order-color-label"></label>
+      </div>
+
+      <div class="col-1">
+          <input type="radio" name="colors" id="green-button" value="green" class="order-color-radio"/>
+          <label for="green-button" style="background-color: #B2F2BB;" class="order-color-label"></label>
+      </div>
+
+      <div class="col-1">
+          <input type="radio" name="colors" id="blue-button" value="blue" class="order-color-radio"/>
+          <label for="blue-button" style="background-color: #A5D8FF;" class="order-color-label"></label>
+      </div>
+
+      <div class="col-1">
+          <input type="radio" name="colors" id="yellow-button" value="yellow" class="order-color-radio"/>
+          <label for="yellow-button" style="background-color: #FFEC99;" class="order-color-label"></label>
+      </div>
+
+      <div class="col-1">
+          <input type="radio" name="colors" id="purple-button" value="purple" class="order-color-radio"/>
+          <label for="purple-button" style="background-color: #D0BFFF;" class="order-color-label"></label>
+      </div>
+      <div class="col-1">
+          <input type="radio" name="colors" id="pink-button" value="peach" class="order-color-radio"/>
+          <label for="pink-button" style="background-color: #EADDD7;" class="order-color-label"></label>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="h2" id="order-price">Итого 0 &#8381;</div>
+
+<button type="submit" class="btn btn-primary" style="margin-bottom:100px;width:220px;height:60px;font-size: large;">Заказать</button>
+</form>
+</div>
+{% endblock %}

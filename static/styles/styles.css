@@ -1,0 +1,268 @@
+.header {
+  padding-top: 30px;
+}
+
+.navig-options a,
+.header a {
+  text-decoration: none;
+  color: #5c8374;
+  position: relative;
+}
+
+.navig {
+  padding-bottom: 35px;
+}
+
+.navig-options {
+  padding-top: 35px;
+}
+
+.navig-options a:after {
+  transition: ease-in-out 0.2s;
+  content: "";
+  display: block;
+  width: 40pt;
+  height: 5px;
+  background-color: #1b4242;
+  position: absolute;
+  bottom: -5px;
+  border-radius: 5px;
+  left: 0;
+  right: 0;
+  transform: translateX(30%);
+}
+.navig-options a#option-1:after {
+  width: 30pt;
+  transform: translateX(60%);
+}
+.navig-options a#option-2:after {
+  width: 30pt;
+  transform: translateX(100%);
+}
+.navig-options a#option-3:after {
+  width: 30pt;
+  transform: translateX(60%);
+}
+
+.navig-options a#option-3.active-option:after {
+  width: 75pt;
+  transform: translateX(-5%);
+}
+
+.navig-options a#option-2.active-option:after {
+  width: 75pt;
+  transform: translateX(8%);
+}
+
+.navig-options a#option-1.active-option:after {
+  width: 75pt;
+  transform: translateX(-5%);
+}
+
+#user-button {
+  /* width: 60px; */
+  /* height: 60px; */
+  /* display: none; */
+  visibility: hidden;
+  margin-right: 50px;
+  margin-top: -10px;
+}
+
+#user-button-label {
+  background: url(../img/user.png);
+  background-size: cover;
+  width: 60px;
+  height: 60px;
+  /* mix-blend-mode: multiply;
+  filter: contrast(1.5); */
+  background-color: transparent;
+  cursor: pointer;
+}
+
+body {
+  background-color: #9ec8b9;
+}
+
+.main-section {
+  width: 100%;
+  height: 100%;
+  padding-left: 28pt;
+  padding-right: 28pt;
+  padding-bottom: 135.5pt;
+  padding-top: 75pt;
+  background: url(../img/fon_page-0001.jpg), #1b4242;
+  text-align: center;
+  border-radius: 60pt;
+  background-size: cover;
+  margin-bottom: 60px;
+}
+
+.main-section-header {
+  color: #9ec8b9;
+}
+
+.main-section-text {
+  padding-bottom: 30px;
+  color: #9ec8b9;
+}
+
+
+.what-we-believe-text {
+  color: #5c8374;
+  margin-top: 40px;
+}
+
+.about-section {
+  margin-top: 70px;
+  margin-bottom: 50px;
+}
+
+
+#who-we-are-img {
+  width: 90%;
+  height: 40%;
+  border-radius: 30px;
+}
+
+.review {
+  padding: 10px;
+  margin-left: 150px;
+  margin-right: 150px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  border-radius: 20px;
+  background-color:rgb(155, 200, 207);
+
+  /* width: 90%; */
+  height: 150px;
+  display: flex;
+  overflow: hidden;
+
+  & > * {
+    height: 100%;
+  }
+  /* max-width: 500px; */
+}
+
+.review .text {
+  overflow-wrap: break-word;
+  margin-left: 20px;
+  max-width: 80%;
+  font-family: monospace;
+  font-size: 1rem;
+  color:#5c8374;
+  height: 100%;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+}
+
+.review img {
+  min-width: 0;
+  min-height: 0;
+  object-fit: cover;
+  border: 1px solid white;
+}
+
+.review .images {
+  margin-left: 25px;
+  display: flex;
+  flex-shrink: 0;
+  width: 90%px;
+  gap: 4px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+  }
+  .small-images {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+    gap: 4px;
+
+    img {
+      height: 100%;
+    }
+  }
+  .small-images:not(:has(img)) {
+    width: 0%;
+  }
+}
+.modal {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.modal .modal-header {
+  border: none;
+}
+
+.order-container {
+  width: 60%;
+  border: 2px solid black;
+  border-radius: 9px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.order-container > .small-section > .row > .col-6 > input {
+  width: 80px;
+  border-radius: 9px;
+  border: 1.4px;
+  text-align: center;
+  margin-left: 30px;
+  margin-top: 15px;
+}
+
+.order-container > .small-section {
+  margin-top: 20px;
+}
+
+#order-width-input {
+  margin-top: 9px;
+}
+
+#order-length-input {
+  margin-top: 5px;
+}
+
+#order-lamp-input {
+  margin-top: 28px;
+}
+
+#order-select-material {
+  border-radius: 10px;
+  width: 287px;
+  height: 40px;
+  text-align: center;
+  margin-top: 15px;
+  margin-right: 29px;
+}
+
+.order-color-radio {
+  display: none;
+}
+
+.order-color-label {
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  margin-right: 10px;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.order-color-label.selected {
+  border-color: black;
+}
+
+
+.order-container > .small-section > .row > .h2 {
+  margin-bottom: 20px;
+}
+
+#order-price {
+  margin-bottom:50px;
+}
