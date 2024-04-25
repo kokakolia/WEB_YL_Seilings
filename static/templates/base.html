@@ -16,6 +16,14 @@
             <div class="col-sm-6 col-lg-3 h3 navig-options text-center"><a id="option-1" href="/about">о нас</a></div>
             <div class="col-sm-6 col-lg-3 h3 navig-options text-center"><a id="option-2" href="/reviews">отзывы</a></div>
             <div class="col-sm-6 col-lg-2 h3 navig-options text-center"><a id="option-3" href="/order">заказ</a></div>
+            {% if current_user.is_authenticated %}
+                <a class="navbar-brand" href="/logout">{{ current_user.name }}</a>
+            {% else %}
+                <p>
+                    <a class="btn btn-primary " href="/register">Зарегистрироваться</a>
+                    <a class="btn btn-success" href="/login">Войти</a>
+                </p>
+            {% endif %}
         </div>
     </div>
     <main role="main" class="container">
