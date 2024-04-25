@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
     {% for review in reviews %}
+      <h5 style="margin-left: 155px;margin-bottom: -20px;">{{review['name']}} {{ review['rating'] }}</h5>
         <div class="review">
+          
             <div class="text" style="width: 45%;">
                 {{ review["text"] }}
             </div>
@@ -49,4 +51,12 @@
           </div>
         </div>
       </div>
+
+
+      {% if ordered %}
+      <div class="review text-center">
+        <button onclick="redirect()" id="plus-button"></button>
+        <label for="plus-button" id="plus"></label>
+      </div>
+      {% endif %}
 {% endblock %}

@@ -74,12 +74,18 @@ function trackLoadPage() {
     } else if (referrerPage == "http://127.0.0.1:8080/order") {
       old_option = "option-3";
     }
-    const oldpage_option = document.getElementById(old_option);
-    oldpage_option.classList.remove("active-option");
+    if (old_option != ''){
+      const oldpage_option = document.getElementById(old_option);
+      oldpage_option.classList.remove("active-option");
+    }
+    
   }
-
-  const curpage_option = document.getElementById(cur_option);
-  curpage_option.classList.add("active-option");
+  if (cur_option != ''){
+    const curpage_option = document.getElementById(cur_option);
+    curpage_option.classList.add("active-option");
+    console.log(3, curpage_option)
+  }
+  
 }
 
 window.onload = function () {
@@ -105,6 +111,12 @@ function showPrice(){
 
   const price = document.getElementById('order-price');
   let cost = Number(width) + Number(length) + Number(lamp);
-  price.innerHTML = `Итого ${ cost }&#8381`;
-  // console.log(price, price.value);
+  if (cost){
+    console.log(cost, cost!= NaN, typeof(cost))
+    price.innerHTML = `Итого ${ cost }&#8381`;
+  }
+}
+
+function redirect(){
+  window.location = "http://127.0.0.1:8080/make_review";
 }
