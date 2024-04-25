@@ -11,11 +11,19 @@
 </head>
 <body>
     <div class="container navig">
-        <div class="row justify-content-between">
-            <div class="col-sm-6 col-lg-3 h2 header"><a href="/">Потолки</a></div>
-            <div class="col-sm-6 col-lg-3 h3 navig-options text-center"><a id="option-1" href="/about">о нас</a></div>
-            <div class="col-sm-6 col-lg-3 h3 navig-options text-center"><a id="option-2" href="/reviews">отзывы</a></div>
-            <div class="col-sm-6 col-lg-2 h3 navig-options text-center"><a id="option-3" href="/order">заказ</a></div>
+        <div class="row">
+            <div class="col-sm-6 col-lg-3 h2 text-start header"><a href="/">Потолки</a></div>
+            <div class="col-sm-5 col-lg-2 h3 navig-options text-center"><a id="option-1" href="/about">о нас</a></div>
+            <div class="col-sm-5 col-lg-3 h3 navig-options text-center"><a id="option-2" href="/reviews">отзывы</a></div>
+            <div class="col-sm-5 col-lg-2 h3 navig-options text-center"><a id="option-3" href="/order">заказ</a></div>
+            <div class="col-lg-2 text-end dropdown">
+                <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" name="user-button" id="user-button"></button>
+                <label id="user-button-label" for="user-button"></label>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/registration">Зарегистрироваться</a></li> 
+                    <li><a class="dropdown-item" href="/login">Логин</a></li>
+                </ul>
+            </div>
         </div>
     </div>
     <main role="main" class="container">
