@@ -7,15 +7,19 @@ from data.users import User
 from bot import bot_send_order
 from flask_login import login_user, LoginManager
 from random import randint
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 
 app = Flask(__name__, template_folder='static/templates')
-app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
-app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-app.config['MAIL_PORT'] = 587
-app.config['MAIL_DEFAULT_SENDER'] = 'tlt.ceilings63@gmail.com'
-app.config['MAIL_USERNAME'] = 'tlt.ceilings63@gmail.com'
-app.config['MAIL_PASSWORD'] = 'yedk uijg enpw zjhg'
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+app.config['MAIL_SERVER'] = os.getenv('MAIL_SERVER')
+app.config['MAIL_PORT'] = os.getenv('MAIL_PORT')
+app.config['MAIL_DEFAULT_SENDER'] = os.getenv('MAIL_DEFAULT_SENDER')
+app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
+app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = False
 login_manager = LoginManager()
@@ -24,7 +28,6 @@ mail = Mail()
 mail.init_app(app)
 with app.app_context():
     message = Message(subject='Код для подтверждения регистрации')
-
 
 users_info = {
 
@@ -62,7 +65,6 @@ def setup_user(data):
     db_sess.commit()
 
 
-
 @app.route('/')
 @app.route('/about')
 def about():
@@ -81,7 +83,7 @@ def reviews():
         'https://images.unsplash.com/photo-1712928247899-2932f4c7dea3?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         'https://plus.unsplash.com/premium_photo-1677178660876-8578f4f6cbac?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'],
         'text': 'YYYYeeeeррррррррррррррррррррррррррррppppppppppppppppp3ррррррe ha'}, {'images': [],
-        'text': 'YYYYeeeeррррррррррррррррррррррррррррppppppppppppppppp3ррррррe ha'},
+                                                                                      'text': 'YYYYeeeeррррррррррррррррррррррррррррppppppppppppppppp3ррррррe ha'},
         {'images': [
             'https://plus.unsplash.com/premium_photo-1677178660876-8578f4f6cbac?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
             'https://images.unsplash.com/photo-1712928247899-2932f4c7dea3?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'],
@@ -95,8 +97,10 @@ def order():
         return render_template('order.html', encoding='utf8')
     else:
         materials = {'2': 'Глянцевый', '1': 'Матовый'}
-        colors = {'red': 'красный', 'green': 'зелёный', 'blue': 'синий', 'yellow': 'жёлтый', 'purple': 'фиолетовый', 'pink': 'розовый'}
-        bot_send_order(request.form['width'], request.form['length'], materials[request.form['material']], request.form['lamps'], colors[request.form['colors']])
+        colors = {'red': 'красный', 'green': 'зелёный', 'blue': 'синий', 'yellow': 'жёлтый', 'purple': 'фиолетовый',
+                  'pink': 'розовый'}
+        bot_send_order(request.form['width'], request.form['length'], materials[request.form['material']],
+                       request.form['lamps'], colors[request.form['colors']])
         return redirect('/')
 
 
@@ -165,7 +169,8 @@ def verify():
             res.delete_cookie(key='email')
             return res
         print(2)
-        return render_template('register.html', title='Регистрация', message='Неверный код подтверждения', form=RegisterForm())
+        return render_template('register.html', title='Регистрация', message='Неверный код подтверждения',
+                               form=RegisterForm())
     return render_template('verification.html', title='Верификация', form=form)
 
 

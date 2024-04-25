@@ -20,9 +20,13 @@
                 <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" name="user-button" id="user-button"></button>
                 <label id="user-button-label" for="user-button"></label>
                 <ul class="dropdown-menu">
+                    {% if current_user.is_authenticated %}
+                    <li><a class="dropdown-item" style="color:red" href="/logout">Выйти</a></li> 
+                    {% else %}
                     <li><a class="dropdown-item" href="/registration">Зарегистрироваться</a></li> 
                     <li><a class="dropdown-item" href="/login">Логин</a></li>
-                </ul>
+                    {% endif %} 
+                </ul>   
             </div>
         </div>
     </div>
