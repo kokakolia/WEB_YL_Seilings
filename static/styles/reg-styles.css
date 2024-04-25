@@ -9,9 +9,10 @@
     display: block;
 }
 
-.sex {
+.sex-group {
     display: flex;
     flex-direction: row;
+    gap: 10px
 }
 
 .reg_form > .btn {
@@ -42,6 +43,7 @@
 
 p {
     display: flex;
+    flex-direction: row;
     justify-content: center;
     gap: 10px;
     align-items: center;
@@ -66,5 +68,12 @@ p {
     justify-content: center;
     height: 100vh;
     flex-direction: column;
+}
+
+.verify-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center
 }
 
