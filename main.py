@@ -5,7 +5,7 @@ from forms import LoginForm, RegisterForm, VerifyForm
 from data import db_session
 from data.users import User
 from bot import bot_send_order
-from flask_login import login_user, LoginManager
+from flask_login import login_user, LoginManager, login_required, logout_user
 from random import randint
 from dotenv import load_dotenv
 import os
@@ -71,6 +71,12 @@ def about():
     return render_template('about.html', encoding='utf8')
 
 
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect("/")
+
 @app.route('/reviews')
 def reviews():
     reviews = [{'name': 'Николай', 'rating': 3, 'images': [
@@ -87,6 +93,7 @@ def reviews():
     return render_template('reviews.html', encoding='utf8', reviews=reviews, ordered=True)
 
 @app.route('/make_review', methods=['GET', 'POST'])
+@login_required
 def make_review():
     if request.method == 'GET':
         return render_template('/make_review.html', maden=False)

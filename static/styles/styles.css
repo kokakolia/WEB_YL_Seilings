@@ -114,6 +114,7 @@ body {
 .about-section {
   margin-top: 70px;
   margin-bottom: 50px;
+  height: 300px;
 }
 
 #who-we-are-img {
@@ -330,4 +331,34 @@ body {
   color: #5c8374;
   border-radius: 8px;
   background-color:#99C6B3;
+}
+
+.base-footer {
+  background-color:#77B399;
+  color: white;
+  margin: 0;
+  width: 100%;
+  max-width: none;
+  height: 200px;
+}
+
+.rating {
+  display: flex;
+}
+.rating label {
+  margin-top: 5px;
+  margin-left: 5px;
+  width: 23px;
+  height: 23px;
+  margin-right: 5px; /* Добавим немного отступа между картинками */
+}
+
+.rating .filled_images {
+  background: url('../img/filled_star.png');
+  background-size: cover;
+}
+
+.rating .hollow_images {
+  background: url('../img/star.png');
+  background-size: cover;
 }
