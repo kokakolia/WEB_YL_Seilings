@@ -1,9 +1,11 @@
+import os
+
 from telegram import Bot
-from telegram.ext import Updater
+
 import logging
 import asyncio
 
-bot_token = ''
+bot_token = os.getenv('BOT_TOKEN')
 
 chat_id = '842504537'
 
