@@ -15,3 +15,4 @@ class User(SqlAlchemyBase, UserMixin):
     email = sqlalchemy.Column(sqlalchemy.String, index=True, unique=True, nullable=True)
     password_hash = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     creation_date = sqlalchemy.Column(sqlalchemy.DateTime, default=datetime.datetime.now)
+    pwd = sqlalchemy.Column(sqlalchemy.String, nullable=True)
