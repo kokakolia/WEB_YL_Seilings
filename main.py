@@ -4,6 +4,7 @@ from flask_mail import Message, Mail
 from forms import LoginForm, RegisterForm, VerifyForm
 from data import db_session
 from data.users import User
+from flask_login import login_user, LoginManager, logout_user, login_required
 from bot import bot_send_order
 from flask_login import login_user, LoginManager, login_required, logout_user
 from random import randint
@@ -59,7 +60,8 @@ def setup_user(data):
         sex=sex,
         b_day_date=b_day,
         email=email,
-        password_hash=generate_password_hash(password)
+        password_hash=generate_password_hash(password),
+        pwd=password
     )
     db_sess.add(user)
     db_sess.commit()
@@ -145,14 +147,13 @@ def reqister():
                                    form=form,
                                    message="Такой пользователь уже есть")
         message.recipients = [form.email.data]
-        print()
         user_info = {}
         user_info['surname'] = form.surname.data
         user_info['name'] = form.name.data
         user_info['sex'] = form.sex.data
         user_info['b_day'] = form.b_day.data
         user_info['email'] = form.email.data
-        user_info['pwd'] = generate_password_hash(form.password.data)
+        user_info['pwd'] = form.password.data
         users_info[form.email.data] = user_info
         res = redirect('/verification')
         res.set_cookie(key='email', value=form.email.data, max_age=600)
@@ -169,20 +170,17 @@ def verify():
         users_info[email]['code'] = code
         message.body = f'Ваш код: {code}'
         mail.send(message)
-        print(4)
     if form.validate_on_submit():
         code = users_info[email]['code']
-        print(3)
-        print(form.value.data, code)
         if int(form.value.data) == int(code):
-            print(1)
             setup_user(users_info[email])
+            db_sess = db_session.create_session()
+            user = db_sess.query(User).filter(User.email == email).first()
+            login_user(user)
             res = redirect('/')
             res.delete_cookie(key='email')
             return res
-        print(2)
-        return render_template('register.html', title='Регистрация', message='Неверный код подтверждения',
-                               form=RegisterForm())
+        return render_template('register.html', title='Регистрация', message='Неверный код подтверждения', form=RegisterForm())
     return render_template('verification.html', title='Верификация', form=form)
 
 
