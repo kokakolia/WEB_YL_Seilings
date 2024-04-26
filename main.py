@@ -4,14 +4,13 @@ from flask_mail import Message, Mail
 from forms import LoginForm, RegisterForm, VerifyForm
 from data import db_session
 from data.users import User
-from flask_login import login_user, LoginManager, logout_user, login_required
 from bot import bot_send_order
 from flask_login import login_user, LoginManager, login_required, logout_user
 from random import randint
 from dotenv import load_dotenv
 import os
 
-load_dotenv()
+load_dotenv('dat.env')
 
 
 app = Flask(__name__, template_folder='static/templates')
