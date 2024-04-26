@@ -102,6 +102,9 @@ def make_review():
     else:
         stars = request.form['rating']
         text = request.form['text']
+        files = request.files.getlist('review_load_image')
+        for file in files:
+            byte_data = file.read()
         return render_template('/make_review.html', maden=True)
 
 

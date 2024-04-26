@@ -362,3 +362,28 @@ body {
   background: url('../img/star.png');
   background-size: cover;
 }
+
+.load_file {
+  position: relative;
+  overflow: hidden;
+  /* display: inline-block; */
+}
+
+.load_file input[type="file"] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 100px;
+  cursor: pointer;
+  opacity: 0;
+  /* display: none;s */
+}
+
+.load_file button {
+  background-color: #4CAF50;
+  color: rgb(208, 208, 208);
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 15px;
+}

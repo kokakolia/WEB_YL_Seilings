@@ -18,11 +18,15 @@
         </div>
         <div class="h3">Ваши впечатления</div>
         <input name="text" type="text" style="width: 80%; height: 200px;background-color: #5C8374;margin-bottom: 50px;border: 0;border-radius: 13px;">
-        <button type="sumbit" style="background-color: rgb(8, 130, 22);border-radius: 8px;border:0px;color:rgb(181, 181, 181)">Опубликовать</button>
+        <div class="load_file">
+            <input type="file" style="background-color: #77B399;" name="review_load_image" id="review_load_image"  accept="image/*" multiple>
+            <button>выбрать изображения</button>
+        </div>
+        <button type="sumbit" style="background-color: rgb(8, 130, 22);border-radius: 8px;border:0px;color:rgb(181, 181, 181);margin-top: 30px;">Опубликовать</button>
     </form>
 </div>
 {% else %}
-<div class="container text-center">
+<div style="height: 500px;" class="container text-center">
     <h1>Спасибо за отзыв!</h1>
 </div>
 {% endif %}
