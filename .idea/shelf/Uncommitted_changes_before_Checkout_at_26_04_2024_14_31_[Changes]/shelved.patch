@@ -1,0 +1,30 @@
+Index: data/users.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import datetime\r\nimport sqlalchemy\r\nfrom flask_login import UserMixin\r\nfrom .db_session import SqlAlchemyBase\r\n\r\n\r\nclass User(SqlAlchemyBase, UserMixin):\r\n    __tablename__ = 'users'\r\n\r\n    id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True, autoincrement=True)\r\n    name = sqlalchemy.Column(sqlalchemy.String, nullable=True)\r\n    surname = sqlalchemy.Column(sqlalchemy.String, nullable=True)\r\n    sex = sqlalchemy.Column(sqlalchemy.String, nullable=True)\r\n    b_day_date = sqlalchemy.Column(sqlalchemy.Date, nullable=True)\r\n    email = sqlalchemy.Column(sqlalchemy.String, index=True, unique=True, nullable=True)\r\n    password_hash = sqlalchemy.Column(sqlalchemy.String, nullable=True)\r\n    creation_date = sqlalchemy.Column(sqlalchemy.DateTime, default=datetime.datetime.now)\r\n    pwd = sqlalchemy.Column(sqlalchemy.String, nullable=True)\r\n
+===================================================================
+diff --git a/data/users.py b/data/users.py
+--- a/data/users.py	
++++ b/data/users.py	
+@@ -15,4 +15,3 @@
+     email = sqlalchemy.Column(sqlalchemy.String, index=True, unique=True, nullable=True)
+     password_hash = sqlalchemy.Column(sqlalchemy.String, nullable=True)
+     creation_date = sqlalchemy.Column(sqlalchemy.DateTime, default=datetime.datetime.now)
+-    pwd = sqlalchemy.Column(sqlalchemy.String, nullable=True)
+Index: forms.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>from flask_wtf import FlaskForm\r\nfrom wtforms import StringField, PasswordField, SubmitField, BooleanField, EmailField, DateField, SelectField\r\nfrom wtforms.validators import DataRequired\r\n\r\n\r\nclass LoginForm(FlaskForm):\r\n    email = StringField('Почта', validators=[DataRequired()])\r\n    password = PasswordField('Пароль', validators=[DataRequired()])\r\n    remember_me = BooleanField('Запомнить меня')\r\n    submit = SubmitField('Войти')\r\n\r\n\r\nclass RegisterForm(FlaskForm):\r\n    email = EmailField('Почта', validators=[DataRequired()])\r\n    surname = StringField('Фамилия', validators=[DataRequired()])\r\n    name = StringField('Имя', validators=[DataRequired()])\r\n    sex = SelectField('Пол', choices=['Мужской', 'Женский'])\r\n    b_day = DateField('Дата рождения', validators=[DataRequired()])\r\n    password = PasswordField('Пароль', validators=[DataRequired()])\r\n    password_again = PasswordField('Повторите пароль', validators=[DataRequired()])\r\n    submit = SubmitField('Войти')\r\n\r\n\r\nclass VerifyForm(FlaskForm):\r\n    value = StringField('', validators=[DataRequired()])\r\n    submit = SubmitField('Отправить')\r\n
+===================================================================
+diff --git a/forms.py b/forms.py
+--- a/forms.py	
++++ b/forms.py	
+@@ -18,7 +18,7 @@
+     b_day = DateField('Дата рождения', validators=[DataRequired()])
+     password = PasswordField('Пароль', validators=[DataRequired()])
+     password_again = PasswordField('Повторите пароль', validators=[DataRequired()])
+-    submit = SubmitField('Войти')
++    submit = SubmitField('Зарегистрироваться')
+ 
+ 
+ class VerifyForm(FlaskForm):
