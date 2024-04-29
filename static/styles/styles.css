@@ -350,7 +350,7 @@ body {
   margin-left: 5px;
   width: 23px;
   height: 23px;
-  margin-right: 5px; /* Добавим немного отступа между картинками */
+  margin-right: 5px;
 }
 
 .rating .filled_images {

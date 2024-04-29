@@ -19,7 +19,7 @@
             {% set id_block = loop.index %}
             {% if review["images"]|length > 0 %}
             <div class="images">
-                <img src={{review["images"][1]}} alt="" onclick="showImage(this.id)" id="{{loop.index}}_{{1}}">
+                <img src='{{review["images"][0] }}' alt="" onclick="showImage(this.id)" id="{{loop.index}}_{{1}}">
             {% endif %}
             {% if review["images"]|length > 1 %}
                 <div class="small-images">

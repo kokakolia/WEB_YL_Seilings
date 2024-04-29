@@ -2,7 +2,7 @@
 {% block content %}
 {% if not maden %}
 <div class="make-review-form container text-center" style="width:40%;height: 100%;">
-    <form method="post" style="width: 100%; height: 100%;">
+    <form method="post" style="width: 100%; height: 100%;" enctype="multipart/form-data">
         <div class="h3" style="margin-top: 0;margin-bottom: 10px;">Оставьте ваш отзыв</div>
         <div class="rating">
             <input type="radio" id="star1" name="rating" value="1">
@@ -19,7 +19,7 @@
         <div class="h3">Ваши впечатления</div>
         <input name="text" type="text" style="width: 80%; height: 200px;background-color: #5C8374;margin-bottom: 50px;border: 0;border-radius: 13px;">
         <div class="load_file">
-            <input type="file" style="background-color: #77B399;" name="review_load_image" id="review_load_image"  accept="image/*" multiple>
+            <input type="file" style="background-color: #77B399;" name="review_load_image" id="review_load_image"  accept="image/*" formenctype="multipart/form-data" multiple>
             <button>выбрать изображения</button>
         </div>
         <button type="sumbit" style="background-color: rgb(8, 130, 22);border-radius: 8px;border:0px;color:rgb(181, 181, 181);margin-top: 30px;">Опубликовать</button>

@@ -1,16 +1,17 @@
-from flask import Flask, render_template, redirect, request
+from flask import Flask, render_template, redirect, request, url_for
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_mail import Message, Mail
 from forms import LoginForm, RegisterForm, VerifyForm
 from data import db_session
 from data.users import User
+from data.reviews import Review
 from bot import bot_send_order
-from flask_login import login_user, LoginManager, login_required, logout_user
+from flask_login import login_user, LoginManager, login_required, logout_user, current_user
 from random import randint
 from dotenv import load_dotenv
 import os
 
-load_dotenv('dat.env')
+load_dotenv('.env')
 
 
 app = Flask(__name__, template_folder='static/templates')
@@ -80,17 +81,18 @@ def logout():
 
 @app.route('/reviews')
 def reviews():
-    reviews = [{'name': 'Николай', 'rating': 3, 'images': [
-        'https://plus.unsplash.com/premium_photo-1677178660876-8578f4f6cbac?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        'https://images.unsplash.com/photo-1712928247899-2932f4c7dea3?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        'https://plus.unsplash.com/premium_photo-1677178660876-8578f4f6cbac?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        'https://plus.unsplash.com/premium_photo-1677178660876-8578f4f6cbac?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'],
-        'text': 'YYYYeeeee haaaAaaaa'}, {'name': 'anton', 'rating': 3, 'images': [],
-                                                    'text': 'YYYYeeeeррррррррррррррррррррррррррррppppppppppppppppp3ррррррe ha'},
-        {'name': 'Бебра', 'rating': 5, 'images': [
-            'https://plus.unsplash.com/premium_photo-1677178660876-8578f4f6cbac?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-            'https://images.unsplash.com/photo-1712928247899-2932f4c7dea3?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'],
-            'text': ''}]
+    # TODO get reviews from db
+    db_sess = db_session.create_session()
+    res = db_sess.query(User.name, User.surname, Review).filter(User.id == Review.user_id)
+    reviews = []
+    for name, surname, review in res:
+        img = str(review.img).split(';')
+        if img == ['']:
+            img = []
+        a = {'name': name+' '+surname, 'rating': review.rating, 'text': review.text, 'images': img}
+        print(a)
+        reviews.append(a)
+        a = {}
     return render_template('reviews.html', encoding='utf8', reviews=reviews, ordered=True)
 
 @app.route('/make_review', methods=['GET', 'POST'])
@@ -99,11 +101,27 @@ def make_review():
     if request.method == 'GET':
         return render_template('/make_review.html', maden=False)
     else:
-        stars = request.form['rating']
+        stars = 6 - int(request.form['rating'])
         text = request.form['text']
         files = request.files.getlist('review_load_image')
+        # TODO save review
+        data = []
         for file in files:
-            byte_data = file.read()
+            print(file)
+            if file.filename:
+                with open('static/users_img/'+file.filename, 'wb') as new_file:
+                    new_file.write(file.read())
+                data.append('static/users_img/'+file.filename)
+        db_sess = db_session.create_session()
+        review = Review()
+        review.text = text
+        review.rating = int(stars)
+        review.user = current_user
+        review.img = ';'.join(data)
+
+        current_user.reviews.append(review)
+        db_sess.merge(current_user)
+        db_sess.commit()
         return render_template('/make_review.html', maden=True)
 
 
