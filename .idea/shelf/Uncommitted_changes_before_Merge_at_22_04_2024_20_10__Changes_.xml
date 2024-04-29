@@ -1,9 +1,0 @@
-<changelist name="Uncommitted_changes_before_Merge_at_22_04_2024_20_10_[Changes]" date="1713802454548" recycled="true" deleted="true">
-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_22_04_2024_20_10_[Changes]/shelved.patch" />
-  <option name="DESCRIPTION" value="Uncommitted changes before Merge at 22.04.2024 20:10 [Changes]" />
-  <binary>
-    <option name="BEFORE_PATH" />
-    <option name="AFTER_PATH" value="db/userdata.db" />
-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_22_04_2024_20_10_[Changes]/userdata.db" />
-  </binary>
-</changelist>
