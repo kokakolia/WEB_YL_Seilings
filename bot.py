@@ -1,6 +1,6 @@
 import os
 
-from telegram import Bot
+from telegram._bot import Bot
 
 import logging
 import asyncio

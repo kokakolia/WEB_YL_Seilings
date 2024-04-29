@@ -5,6 +5,33 @@
     min-height: 100vh;
 }
 
+.main-container {
+    background: #9ec8b9;
+
+}
+
+body > a {
+    position: absolute;
+    color: #366957;
+    margin-top: 10px
+}
+
+body > h1 {
+    margin-bottom: 10px
+}
+
+.reg > a {
+    color: #366957
+}
+
+input:not([type='submit']) {
+    background: #dff0ea !important
+}
+
+* {
+    color: #366957
+}
+
 .row > div > div > *{
     display: block;
 }
@@ -20,6 +47,36 @@
     background-color: #5C8374;
     color: black;
     align-self: center;
+}
+
+.reg-form > p {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    gap: 10px;
+    align-items: center;
+    margin-right: 150px
+}
+
+.reg-form > p > input[type='submit'] {
+    margin-left: 210px
+}
+
+.reg-form > p > label {
+    font-size: large
+}
+
+.reg-form > p > input {
+    width: 300px
+}
+
+.reg-form > p > select{
+    width: 300px;
+    background: #dff0ea !important
+}
+
+.reg-form > .btn {
+    text-color: #366957
 }
 
 .reg_form > * {
@@ -44,17 +101,31 @@
 p {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     gap: 10px;
     align-items: center;
 }
+
+.remember_me {
+    justify-content: center
+}
+
+
 
 .form {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    min-width: 400px;
-} 
+    gap: 5px
+}
+
+.form > p > input[type='text'] {
+    width: 300px
+}
+
+.reg-form > p > input {
+    width: 300px
+}
 
 .reg {
     display: flex;
