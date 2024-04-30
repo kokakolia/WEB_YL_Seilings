@@ -1,72 +1,84 @@
 {% extends "base.html" %}
 {% block content %}
     {% for review in reviews %}
-    <div class="rating">
-      <h5 style="margin-left: 155px;margin-bottom: -20px;">{{review['name']}} </h5>
-      {% for i in range(1, review['rating'] + 1)%}
-        <label class="filled_images"></label>
-      {% endfor %}
-      {% for i in range(review['rating'] + 1, 6)%}
-      <label class="hollow_images"></label>
-      {% endfor %}
-    </div>
-      <div class="review">
-          
-            <div class="text" style="width: 45%;">
-                {{ review["text"] }}
-            </div>
-            
-            {% set id_block = loop.index %}
-            {% if review["images"]|length > 0 %}
-            <div class="images">
-                <img src='{{review["images"][0] }}' alt="" onclick="showImage(this.id)" id="{{loop.index}}_{{1}}">
-            {% endif %}
-            {% if review["images"]|length > 1 %}
-                <div class="small-images">
-                    {% for img in review["images"] %}
-                        {% if loop.index > 3 %}
-                        <img src={{img}} alt="бебе" id="{{id_block }}_{{loop.index}}" style="display: none" onclick="showImage(this.id)">
-                        {% elif loop.index > 1 %}
-                            <img src={{img}} alt="бебе" id="{{ id_block }}_{{loop.index}}" onclick="showImage(this.id)">
-                        {% endif %} 
-                    {% endfor %}
-                </div>  
-            {% endif %}
-            </div>
+    <div class="review-page">
+      <div class="row">
+        <div class="col-6 rating">
+          <h5 style="margin-left: 155px;margin-bottom: -30px;">{{review['name']}} </h5>
+          {% for i in range(1, review['rating'] + 1)%}
+            <label class="filled_images"></label>
+          {% endfor %}
+          {% for i in range(review['rating'] + 1, 6)%}
+          <label class="hollow_images"></label>
+          {% endfor %}
         </div>
-    {% endfor %}
+        {% if current_user.is_authenticated and current_user == review.user %}
+          <div class="text-center col-6" style="display: inline-block;">
+            <button onclick="redirect('/change_review', {{review['id']}} )" id="change-review" name="change-review"></button>
+            <label for="change-review"></label>
+            <button onclick="console.log('delete')" id="delete-review" name="delete-review"></button>
+            <label for="delete-review"></label>
+          </div>
+        {% endif %}
+      </div>
+        <div class="review">
+            
+              <div class="text" style="width: 45%;">
+                  {{ review["text"] }}
+              </div>
+              
+              {% set id_block = loop.index %}
+              {% if review["images"]|length > 0 %}
+              <div class="images">
+                  <img src='{{review["images"][0] }}' alt="" onclick="showImage(this.id)" id="{{loop.index}}_{{1}}">
+              {% endif %}
+              {% if review["images"]|length > 1 %}
+                  <div class="small-images">
+                      {% for img in review["images"] %}
+                          {% if loop.index > 3 %}
+                          <img src={{img}} alt="бебе" id="{{id_block }}_{{loop.index}}" style="display: none" onclick="showImage(this.id)">
+                          {% elif loop.index > 1 %}
+                              <img src={{img}} alt="бебе" id="{{ id_block }}_{{loop.index}}" onclick="showImage(this.id)">
+                          {% endif %} 
+                      {% endfor %}
+                  </div>  
+              {% endif %}
+              </div>
+          </div>
+      {% endfor %}
 
-    
+      
 
-      <div class="modal" tabindex="-1" id="modalWithImages">
-        <div class="modal-dialog modal-xl">
-          <div class="modal-content" style="background-color: rgba(79, 100, 92, 0.1); border:none">
-            <div class="modal-header">
-              <button type="button" class="btn-close" onclick="closeImage()" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <div id="carouselExample" class="carousel slide">
-                <div class="carousel-inner" id="carouselImages">
+        <div class="modal" tabindex="-1" id="modalWithImages">
+          <div class="modal-dialog modal-xl">
+            <div class="modal-content" style="background-color: rgba(79, 100, 92, 0.1); border:none">
+              <div class="modal-header">
+                <button type="button" class="btn-close" onclick="closeImage()" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <div id="carouselExample" class="carousel slide">
+                  <div class="carousel-inner" id="carouselImages">
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev" >
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev" >
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
 
-      {% if show %}
-      <div class="review text-center">
-        <button onclick="redirect()" id="plus-button"></button>
-        <label for="plus-button" id="plus"></label>
-      </div>
-      {% endif %}
+        {% if show %}
+        <div class="review text-center">
+          <button onclick="redirect('/make_review')" id="plus-button"></button>
+          <label for="plus-button" id="plus"></label>
+        </div>
+        {% endif %}
+  </div>
 {% endblock %}

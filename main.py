@@ -88,7 +88,7 @@ def reviews():
         img = str(review.img).split(';')
         if img == ['']:
             img = []
-        a = {'name': name+' '+surname, 'rating': review.rating, 'text': review.text, 'images': img}
+        a = {'name': name+' '+surname, 'rating': review.rating, 'text': review.text, 'images': img, 'user': review.user, 'id': review.id}
         print(a)
         reviews.append(a)
         a = {}
@@ -204,6 +204,12 @@ def verify():
         return render_template('register.html', title='Регистрация', message='Неверный код подтверждения', form=RegisterForm())
     return render_template('verification.html', title='Верификация', form=form)
 
+
+@app.route('/change_review/<int:id>', methods=['GET', 'POST'])
+def change_review(id):
+    if request.method == 'GET':
+        return render_template('change_review.html', changed=False)
+    return render_template('change_review.html', changed=True)
 
 if __name__ == '__main__':
     main()

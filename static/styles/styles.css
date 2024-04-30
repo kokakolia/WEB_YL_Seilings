@@ -60,9 +60,6 @@
 }
 
 #user-button {
-  /* width: 60px; */
-  /* height: 60px; */
-  /* display: none; */
   visibility: hidden;
   margin-right: 50px;
   margin-top: -10px;
@@ -73,8 +70,6 @@
   background-size: cover;
   width: 60px;
   height: 60px;
-  /* mix-blend-mode: multiply;
-  filter: contrast(1.5); */
   background-color: transparent;
   cursor: pointer;
 }
@@ -140,11 +135,11 @@ body {
   margin-left: 150px;
   margin-right: 150px;
   margin-bottom: 30px;
-  margin-top: 30px;
+  /* margin-top: 30px; */
   border-radius: 20px;
   background-color: #77B399;
 
-  /* width: 90%; */
+
   height: 150px;
   display: flex;
   overflow: hidden;
@@ -152,7 +147,7 @@ body {
   & > * {
     height: 100%;
   }
-  /* max-width: 500px; */
+
 }
 
 .review .text {
@@ -348,13 +343,13 @@ body {
   margin: 0;
   width: 100%;
   max-width: none;
-  height: 200px;
+  height: 230px;
 }
 
-.rating {
+.review-page .row .rating {
   display: flex;
 }
-.rating label {
+.review-page .row .rating label {
   margin-top: 5px;
   margin-left: 5px;
   width: 23px;
@@ -362,20 +357,40 @@ body {
   margin-right: 5px;
 }
 
-.rating .filled_images {
+.row .rating .filled_images {
   background: url('../img/filled_star.png');
   background-size: cover;
 }
 
-.rating .hollow_images {
+.row .rating .hollow_images {
   background: url('../img/star.png');
   background-size: cover;
+}
+
+#delete-review, #change-review {
+  display: none;
+}
+
+label[for="delete-review"] {
+  background: url('../img/delete.png');
+  background-size: cover;
+  width: 23px;
+  height:23px;
+  cursor: pointer;
+}
+
+label[for="change-review"] {
+  background: url('../img/pen.png');
+  background-size: cover;
+  width: 23px;
+  height:23px;
+  cursor: pointer;
+  margin-left: 32%;
 }
 
 .load_file {
   position: relative;
   overflow: hidden;
-  /* display: inline-block; */
 }
 
 .load_file input[type="file"] {
@@ -385,7 +400,6 @@ body {
   font-size: 100px;
   cursor: pointer;
   opacity: 0;
-  /* display: none;s */
 }
 
 .load_file button {
