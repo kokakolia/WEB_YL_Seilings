@@ -6,7 +6,7 @@ from data import db_session
 from data.users import User
 from data.reviews import Review
 from bot import bot_send_order
-from flask_login import login_user, LoginManager, login_required, logout_user, current_user
+from flask_login import login_user, LoginManager, login_required, logout_user, current_user, AnonymousUserMixin
 from random import randint
 from dotenv import load_dotenv
 import os
@@ -81,7 +81,6 @@ def logout():
 
 @app.route('/reviews')
 def reviews():
-    # TODO get reviews from db
     db_sess = db_session.create_session()
     res = db_sess.query(User.name, User.surname, Review).filter(User.id == Review.user_id)
     reviews = []
@@ -93,7 +92,10 @@ def reviews():
         print(a)
         reviews.append(a)
         a = {}
-    return render_template('reviews.html', encoding='utf8', reviews=reviews, ordered=True)
+    show = False
+    if not isinstance(current_user, AnonymousUserMixin) and current_user.is_ordered and not current_user.made_review:
+        show = True
+    return render_template('reviews.html', encoding='utf8', reviews=reviews, show=show)
 
 @app.route('/make_review', methods=['GET', 'POST'])
 @login_required
@@ -104,7 +106,6 @@ def make_review():
         stars = 6 - int(request.form['rating'])
         text = request.form['text']
         files = request.files.getlist('review_load_image')
-        # TODO save review
         data = []
         for file in files:
             print(file)

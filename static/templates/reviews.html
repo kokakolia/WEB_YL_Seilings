@@ -24,7 +24,9 @@
             {% if review["images"]|length > 1 %}
                 <div class="small-images">
                     {% for img in review["images"] %}
-                        {% if loop.index > 1 %}
+                        {% if loop.index > 3 %}
+                        <img src={{img}} alt="бебе" id="{{id_block }}_{{loop.index}}" style="display: none" onclick="showImage(this.id)">
+                        {% elif loop.index > 1 %}
                             <img src={{img}} alt="бебе" id="{{ id_block }}_{{loop.index}}" onclick="showImage(this.id)">
                         {% endif %} 
                     {% endfor %}
@@ -61,7 +63,7 @@
       </div>
 
 
-      {% if ordered %}
+      {% if show %}
       <div class="review text-center">
         <button onclick="redirect()" id="plus-button"></button>
         <label for="plus-button" id="plus"></label>
