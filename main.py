@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, request, url_for
+from flask import Flask, abort, render_template, redirect, request, url_for
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_mail import Message, Mail
 from forms import LoginForm, RegisterForm, VerifyForm
@@ -10,6 +10,7 @@ from flask_login import login_user, LoginManager, login_required, logout_user, c
 from random import randint
 from dotenv import load_dotenv
 import os
+from json import loads
 
 load_dotenv('.env')
 
@@ -61,7 +62,6 @@ def setup_user(data):
         b_day_date=b_day,
         email=email,
         password_hash=generate_password_hash(password),
-        pwd=password
     )
     db_sess.add(user)
     db_sess.commit()
@@ -95,6 +95,7 @@ def reviews():
     show = False
     if not isinstance(current_user, AnonymousUserMixin) and current_user.is_ordered and not current_user.made_review:
         show = True
+    db_sess.close()
     return render_template('reviews.html', encoding='utf8', reviews=reviews, show=show)
 
 @app.route('/make_review', methods=['GET', 'POST'])
@@ -108,7 +109,6 @@ def make_review():
         files = request.files.getlist('review_load_image')
         data = []
         for file in files:
-            print(file)
             if file.filename:
                 with open('static/users_img/'+file.filename, 'wb') as new_file:
                     new_file.write(file.read())
@@ -206,10 +206,75 @@ def verify():
 
 
 @app.route('/change_review/<int:id>', methods=['GET', 'POST'])
+@login_required
 def change_review(id):
     if request.method == 'GET':
-        return render_template('change_review.html', changed=False)
-    return render_template('change_review.html', changed=True)
+        db_sess = db_session.create_session()
+        text, rating, imgs = db_sess.query(Review.text, Review.rating, Review.img).filter(Review.id == id, Review.user == current_user).first()
+        imgs = imgs.split(';')
+        if imgs and imgs[0] == '':
+            imgs = []
+        db_sess.close()
+        return render_template('change_review.html', changed=False, text=text, value=(6-int(rating)), imgs=imgs)
+    elif request.method == 'POST':
+        
+        data = dict(request.form)
+        files: list = request.files.getlist('review_load_image')
+
+        db_sess = db_session.create_session()
+        review = db_sess.query(Review).filter(Review.id == id, Review.user == current_user).first()
+        
+        review.rating = 6 - int(data['rating'])
+        review.text = data['text']
+        
+        imgs = review.img.split(';')
+        
+        stayed = loads(data['carouselData'])
+    
+        if type(stayed) is str:
+            stayed = [stayed]
+            
+        for img in imgs:
+            if img and os.path.exists(img) and img not in stayed:
+                print(img, img in stayed)
+                os.remove(img)
+                
+        
+
+        new_files = []
+        for file in files:
+            if file.filename:
+                with open('static/users_img/'+file.filename, 'wb') as new_file:
+                    new_file.write(file.read())
+                new_files.append('static/users_img/'+file.filename)
+                
+        
+        p = []
+        if new_files:
+            p += new_files
+        if stayed:
+            p += stayed
+        review.img = ';'.join(p)
+        
+        db_sess.merge(review)
+        db_sess.commit()
+        return render_template('change_review.html', changed=True)
+
+@app.route('/delete_review/<int:id>')
+@login_required
+def delete_review(id):
+    db_sess = db_session.create_session()
+    review = db_sess.query(Review).filter(Review.id == id, Review.user == current_user).first()
+    if review:
+        imgs = review.img.split(';')
+        for img in imgs:
+            if img and os.path.exists(img):
+                os.remove(img)
+        db_sess.delete(review)
+        db_sess.commit()
+    else:
+        abort(404)
+    return redirect('/reviews')    
 
 if __name__ == '__main__':
     main()

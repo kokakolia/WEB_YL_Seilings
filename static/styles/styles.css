@@ -60,9 +60,7 @@
 }
 
 #user-button {
-  visibility: hidden;
-  margin-right: 50px;
-  margin-top: -10px;
+  display: none;
 }
 
 #user-button-label {
@@ -74,8 +72,18 @@
   cursor: pointer;
 }
 
+.navig .row .dropdown ul {
+  margin-left: 80vw !important;
+  margin-top: 8vh !important;
+}
+
 body {
   background-color: #9ec8b9;
+  /* min-height: 100vh; */
+}
+
+main {
+  min-height: 30vh;
 }
 
 .ubuntu-light {
@@ -336,6 +344,43 @@ body {
   border-radius: 8px;
   background-color:#99C6B3;
 }
+.change-review-form .rating {
+  margin-top: 10px;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.change-review-form .rating input {
+  display: none;
+}
+
+.change-review-form .rating label {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  background-image: url('../img/star.png');
+  background-size: cover;
+  float: right;
+  background-color:transparent;
+}
+
+.change-review-form .rating label:hover,
+.change-review-form .rating label:hover ~ label {
+  background-image: url('../img/filled_star.png'); 
+  background-color: transparent;
+}
+
+.change-review-form .rating input:checked ~ label {
+  background-color: transparent;
+  background-image: url('../img/filled_star.png'); 
+}
+
+
+.change-review-form {
+  color: #5c8374;
+  border-radius: 8px;
+  background-color:#99C6B3;
+}
 
 .base-footer {
   background-color:#77B399;
@@ -346,10 +391,10 @@ body {
   height: 230px;
 }
 
-.review-page .row .rating {
+.review-page .review-header .rating {
   display: flex;
 }
-.review-page .row .rating label {
+.review-page .review-header .rating label {
   margin-top: 5px;
   margin-left: 5px;
   width: 23px;
@@ -357,35 +402,39 @@ body {
   margin-right: 5px;
 }
 
-.row .rating .filled_images {
+.review-header .rating .filled_images {
   background: url('../img/filled_star.png');
   background-size: cover;
 }
 
-.row .rating .hollow_images {
+.review-header .rating .hollow_images {
   background: url('../img/star.png');
   background-size: cover;
 }
 
-#delete-review, #change-review {
+/* #delete-review, #change-review {
   display: none;
-}
+} */
 
-label[for="delete-review"] {
+#delete-review-label {
   background: url('../img/delete.png');
   background-size: cover;
   width: 23px;
   height:23px;
   cursor: pointer;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
-label[for="change-review"] {
+#change-review-label{
   background: url('../img/pen.png');
   background-size: cover;
   width: 23px;
   height:23px;
   cursor: pointer;
-  margin-left: 32%;
+  /* margin-left: 32%; */
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .load_file {
@@ -409,4 +458,31 @@ label[for="change-review"] {
   border: none;
   cursor: pointer;
   border-radius: 15px;
+}
+
+#change-images {
+  width: 50%;
+  height: 35px;
+  margin-bottom: 20px;
+  background-color: green;
+  border-radius: 10px;
+  border:none;
+  font-size: 0.8rem;
+  color: white;
+}
+
+.modal-header .delete-in-change  label {
+  width: 23px;
+  height: 23px;
+  background: url('../img/delete.png');
+  background-size: cover;
+  cursor: pointer;
+}
+.modal-header .delete-in-change button {
+  display: none;
+}
+
+.carousel-inner .carousel-item img{
+  width: 55vw;
+  height: 70vh;
 }

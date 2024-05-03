@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
     {% for review in reviews %}
-    <div class="review-page">
-      <div class="row">
-        <div class="col-6 rating">
+    <div class="review-page"> 
+      <div class="review-header" style="display: flex;">
+        <div class="rating">
           <h5 style="margin-left: 155px;margin-bottom: -30px;">{{review['name']}} </h5>
           {% for i in range(1, review['rating'] + 1)%}
             <label class="filled_images"></label>
@@ -13,11 +13,11 @@
           {% endfor %}
         </div>
         {% if current_user.is_authenticated and current_user == review.user %}
-          <div class="text-center col-6" style="display: inline-block;">
-            <button onclick="redirect('/change_review', {{review['id']}} )" id="change-review" name="change-review"></button>
-            <label for="change-review"></label>
-            <button onclick="console.log('delete')" id="delete-review" name="delete-review"></button>
-            <label for="delete-review"></label>
+          <div class="text-end" style="display: flex;margin-left: 26%;">
+            <a href="/change_review/{{review['id']}}" id="change-review"><label for="change-review" id="change-review-label"></label></a>
+            
+            <a href="/delete_review/{{review['id']}}" id="delete-review"><label for="delete-review" id="delete-review-label"></label></a>
+            
           </div>
         {% endif %}
       </div>

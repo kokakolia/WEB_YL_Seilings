@@ -117,11 +117,61 @@ function showPrice(){
   }
 }
 
-function redirect(ref,  arg=None){
+function redirect(ref,  arg=null){
   if (arg){
     window.location = `${ref}/${arg}`
   }
   else{
     window.location = ref;
   }
+}
+images_to_delete = []
+function deleteImage(){
+
+  block = document.querySelector('.change-review-form .carousel-inner .active');
+  if (block){
+    block.style.display = 'none';
+  block.classList.remove('carousel-item');
+  block.classList.remove('active')
+  img = block.querySelector('img').src;
+  images_to_delete.push(img);
+
+
+  next_block_list = document.querySelectorAll('.change-review-form .carousel-inner div');
+  for (let i = 0;i < next_block_list.length;i++){
+    cur_block = next_block_list[i];
+    if (cur_block.style.display != 'none'){
+      cur_block.classList.add('active');
+      break;
+    }
+  }
+  console.log(img, cur_block)
+  }
+  
+  // console.log(next_block_list);
+
+}
+
+function postData(){
+  const formData = new FormData(document.getElementById("form-to-change"));
+  const carouselData = [];
+  const els = document.getElementsByClassName("carousel-item");
+  for (let i = 0; i < els.length; i++){
+    el = els[i];
+    srcs = el.querySelector('img').src;
+    srcs = srcs.slice(srcs.indexOf('static/users_img/'));
+    carouselData.push(srcs);
+  }
+  console.log(carouselData);
+  json = JSON.stringify(carouselData)
+  console.log(json)
+  formData.append('carouselData', JSON.stringify(carouselData));
+  
+  fetch('', {
+    method: 'POST',
+    body: formData
+  }).then(response => response.text())
+  .then(html => {
+      document.body.innerHTML = html;
+  })
 }
