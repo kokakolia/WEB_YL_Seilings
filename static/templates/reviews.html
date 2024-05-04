@@ -13,7 +13,7 @@
           {% endfor %}
         </div>
         {% if current_user.is_authenticated and current_user == review.user %}
-          <div class="text-end" style="display: flex;margin-left: 26%;">
+          <div class="change-review-buttons">
             <a href="/change_review/{{review['id']}}" id="change-review"><label for="change-review" id="change-review-label"></label></a>
             
             {% set a = review["id"]%}
