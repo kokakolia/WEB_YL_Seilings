@@ -205,6 +205,7 @@ main {
     width: 0%;
   }
 }
+
 .modal {
   background-color: rgba(0, 0, 0, 0.5);
 }
@@ -412,9 +413,9 @@ main {
   background-size: cover;
 }
 
-/* #delete-review, #change-review {
+#delete-review {
   display: none;
-} */
+}
 
 #delete-review-label {
   background: url('../img/delete.png');

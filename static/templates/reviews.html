@@ -16,8 +16,28 @@
           <div class="text-end" style="display: flex;margin-left: 26%;">
             <a href="/change_review/{{review['id']}}" id="change-review"><label for="change-review" id="change-review-label"></label></a>
             
-            <a href="/delete_review/{{review['id']}}" id="delete-review"><label for="delete-review" id="delete-review-label"></label></a>
+            {% set a = review["id"]%}
+            <button id="delete-review" data-bs-toggle="modal" data-bs-target="#deleteModal"></button>
+            <!-- <a href="/delete_review/{{review['id']}}" id="delete-review"> -->
+            <!-- </a> -->
+            <label for="delete-review" id="delete-review-label"></label>
             
+            <div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true" aria-labelledby="deleteModalLabel">
+              <div class="modal-dialog">
+                <div class="modal-content" style="background-color: #9ec8b9;"> 
+                  <div class="modal-header">
+                    <label id="deleteModalLabel">Вы действительно хотите удалить ваш отзыв?</label>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                  </div>
+                  <div class="modal-footer" style="border: none">
+                    <button type="button" class="btn btn-info" data-bs-dismiss="modal">Отмена</button>
+                    <button type="button" onclick="redirect('/delete_review', {{a}})" class="btn btn-danger">Удалить отзыв</button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         {% endif %}
       </div>
