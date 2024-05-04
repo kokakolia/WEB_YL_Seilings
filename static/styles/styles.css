@@ -427,6 +427,11 @@ main {
   margin-right: 5px;
 }
 
+.change-review-buttons {
+  position: absolute;
+  right: 18vw;
+}
+
 #change-review-label{
   background: url('../img/pen.png');
   background-size: cover;
