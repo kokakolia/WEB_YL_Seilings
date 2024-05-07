@@ -1,3 +1,5 @@
+/* BASE */
+
 .header {
   padding-top: 30px;
 }
@@ -70,16 +72,18 @@
   height: 60px;
   background-color: transparent;
   cursor: pointer;
+  position: fixed;
+  right: 1px;
+  top: 1px;
 }
 
-.navig .row .dropdown ul {
+.navig .dropdown ul {
   margin-left: 80vw !important;
   margin-top: 8vh !important;
 }
 
 body {
   background-color: #9ec8b9;
-  /* min-height: 100vh; */
 }
 
 main {
@@ -97,6 +101,20 @@ main {
   font-weight: 700;
   font-style: normal;
 }
+
+.base-footer {
+  background-color:#77B399;
+  color: white;
+  margin: 0;
+  width: 100%;
+  max-width: none;
+  position: absolute;
+  margin-top: 60vh;
+}
+
+
+/* ABOUT */
+
 
 .main-section {
   width: 100%;
@@ -137,6 +155,11 @@ main {
   height: 40%;
   border-radius: 30px;
 }
+
+
+/* REVIEWS */
+
+
 
 .review {
   padding: 10px;
@@ -238,6 +261,60 @@ main {
   display: none;
 }
 
+
+.review-page .review-header .rating {
+  display: flex;
+}
+.review-page .review-header .rating label {
+  margin-top: 5px;
+  margin-left: 5px;
+  width: 23px;
+  height: 23px;
+  margin-right: 5px;
+}
+
+.review-header .rating .filled_images {
+  background: url('../img/filled_star.png');
+  background-size: cover;
+}
+
+.review-header .rating .hollow_images {
+  background: url('../img/star.png');
+  background-size: cover;
+}
+
+#delete-review {
+  display: none;
+}
+
+#delete-review-label {
+  background: url('../img/delete.png');
+  background-size: cover;
+  width: 23px;
+  height:23px;
+  cursor: pointer;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.change-review-buttons {
+  position: absolute;
+  right: 18vw;
+}
+
+#change-review-label{
+  background: url('../img/pen.png');
+  background-size: cover;
+  width: 23px;
+  height:23px;
+  cursor: pointer;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+
+/* ORDER */
+
 .order-container {
   width: 60%;
   border: 2px solid black;
@@ -308,6 +385,10 @@ main {
   margin-bottom: 50px;
 }
 
+
+/* MAKE REVIEW */
+
+
 .make-review-form .rating {
   margin-top: 10px;
   display: inline-block;
@@ -345,6 +426,9 @@ main {
   border-radius: 8px;
   background-color:#99C6B3;
 }
+
+/* CHANGE REVIEW */
+
 .change-review-form .rating {
   margin-top: 10px;
   display: inline-block;
@@ -381,66 +465,6 @@ main {
   color: #5c8374;
   border-radius: 8px;
   background-color:#99C6B3;
-}
-
-.base-footer {
-  background-color:#77B399;
-  color: white;
-  margin: 0;
-  width: 100%;
-  max-width: none;
-  height: 230px;
-}
-
-.review-page .review-header .rating {
-  display: flex;
-}
-.review-page .review-header .rating label {
-  margin-top: 5px;
-  margin-left: 5px;
-  width: 23px;
-  height: 23px;
-  margin-right: 5px;
-}
-
-.review-header .rating .filled_images {
-  background: url('../img/filled_star.png');
-  background-size: cover;
-}
-
-.review-header .rating .hollow_images {
-  background: url('../img/star.png');
-  background-size: cover;
-}
-
-#delete-review {
-  display: none;
-}
-
-#delete-review-label {
-  background: url('../img/delete.png');
-  background-size: cover;
-  width: 23px;
-  height:23px;
-  cursor: pointer;
-  margin-left: 5px;
-  margin-right: 5px;
-}
-
-.change-review-buttons {
-  position: absolute;
-  right: 18vw;
-}
-
-#change-review-label{
-  background: url('../img/pen.png');
-  background-size: cover;
-  width: 23px;
-  height:23px;
-  cursor: pointer;
-  /* margin-left: 32%; */
-  margin-left: 5px;
-  margin-right: 5px;
 }
 
 .load_file {
