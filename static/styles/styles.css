@@ -72,14 +72,21 @@
   height: 60px;
   background-color: transparent;
   cursor: pointer;
+}
+
+#user-login-dropdown {
   position: fixed;
   right: 1px;
   top: 1px;
 }
 
 .navig .dropdown ul {
-  margin-left: 80vw !important;
-  margin-top: 8vh !important;
+  margin-left: calc(100vw - 220px) !important;
+  top: 8vh !important;
+  width:100%;
+  height: 110%;
+  padding-top: 0 !important;
+  --bs-dropdown-link-hover-bg: none !important
 }
 
 body {
