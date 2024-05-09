@@ -132,7 +132,7 @@ main {
   padding-top: 10%;
   background: url(../img/fon_page-0001.jpg), #1b4242;
   text-align: center;
-  border-radius: calc(6% + 15px);
+  border-radius: calc(5% + 30px);
   background-size: cover;
   margin-bottom: 75px;
 }
