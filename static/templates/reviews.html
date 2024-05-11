@@ -1,83 +1,84 @@
 {% extends "base.html" %} {% block content %} 
-{% for review in reviews %}
 <div class="review-page">
-  <div class="review-header" style="display: flex">
-    <div class="rating">
-      <h6 style="margin-left: 12vw">
-        {{review['name']}}
-      </h6>
-      <div class="stars">
-        {% for i in range(1, review['rating'] + 1)%}
-        <label class="filled_images"></label>
-        {% endfor %} 
-        {% for i in range(review['rating'] + 1, 6)%}
-        <label class="hollow_images"></label>
-        {% endfor %}
+  {% for review in reviews %}
+    <div class="review-header" style="display: flex">
+      <div class="rating">
+        <h6 style="margin-left: 12vw">
+          {{review['name']}}
+        </h6>
+        <div class="stars">
+          {% for i in range(1, review['rating'] + 1)%}
+          <label class="filled_images"></label>
+          {% endfor %} 
+          {% for i in range(review['rating'] + 1, 6)%}
+          <label class="hollow_images"></label>
+          {% endfor %}
+        </div>
       </div>
-    </div>
-    {% if current_user.is_authenticated and current_user == review.user %}
-    <div class="change-review-buttons">
-      <a href="/change_review/{{review['id']}}" id="change-review"
-        ><label for="change-review" id="change-review-label"></label
-      ></a>
+      {% if current_user.is_authenticated and current_user == review.user %}
+      <div class="change-review-buttons">
+        <a href="/change_review/{{review['id']}}" id="change-review"
+          ><label for="change-review" id="change-review-label"></label
+        ></a>
 
-      {% set a = review["id"]%}
-      <button
-        id="delete-review"
-        data-bs-toggle="modal"
-        data-bs-target="#deleteModal"
-      ></button>
-      <!-- <a href="/delete_review/{{review['id']}}" id="delete-review"> -->
-      <!-- </a> -->
-      <label for="delete-review" id="delete-review-label"></label>
+        {% set a = review["id"]%}
+        <button
+          id="delete-review"
+          data-bs-toggle="modal"
+          data-bs-target="#deleteModal"
+        ></button>
+        <!-- <a href="/delete_review/{{review['id']}}" id="delete-review"> -->
+        <!-- </a> -->
+        <label for="delete-review" id="delete-review-label"></label>
 
-      <div
-        class="modal fade"
-        id="deleteModal"
-        tabindex="-1"
-        aria-hidden="true"
-        aria-labelledby="deleteModalLabel"
-      >
-        <div class="modal-dialog">
-          <div class="modal-content" style="background-color: #9ec8b9">
-            <div class="modal-header">
-              <label id="deleteModalLabel"
-                >Вы действительно хотите удалить ваш отзыв?</label
-              >
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div class="modal-body"></div>
-            <div class="modal-footer" style="border: none">
-              <button
-                type="button"
-                class="btn btn-info"
-                data-bs-dismiss="modal"
-              >
-                Отмена
-              </button>
-              <button
-                type="button"
-                onclick="redirect('/delete_review', {{a}})"
-                class="btn btn-danger"
-              >
-                Удалить отзыв
-              </button>
+        <div
+          class="modal fade"
+          id="deleteModal"
+          tabindex="-1"
+          aria-hidden="true"
+          aria-labelledby="deleteModalLabel"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content" style="background-color: #9ec8b9">
+              <div class="modal-header">
+                <label id="deleteModalLabel"
+                  >Вы действительно хотите удалить ваш отзыв?</label
+                >
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body"></div>
+              <div class="modal-footer" style="border: none">
+                <button
+                  type="button"
+                  class="btn btn-info"
+                  data-bs-dismiss="modal"
+                >
+                  Отмена
+                </button>
+                <button
+                  type="button"
+                  onclick="redirect('/delete_review', {{a}})"
+                  class="btn btn-danger"
+                >
+                  Удалить отзыв
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
     {% endif %}
   </div>
   <div class="review">
     <div class="text" style="width: 45%">{{ review["text"] }}</div>
 
-    {% set id_block = loop.index %} {% if review["images"]|length > 0 %}
+    {% set id_block = loop.index %} 
+    {% if review["images"]|length > 0 %}
     <div class="images">
       <img
         src='{{review["images"][0] }}'
@@ -85,9 +86,10 @@
         onclick="showImage(this.id)"
         id="{{loop.index}}_{{1}}"
       />
-      {% endif %} {% if review["images"]|length > 1 %}
+      {% if review["images"]|length > 1 %}
       <div class="small-images">
-        {% for img in review["images"] %} {% if loop.index > 3 %}
+        {% for img in review["images"] %}
+         {% if loop.index > 3 %}
         <img
           src="{{img}}"
           alt="бебе"
@@ -102,13 +104,15 @@
           id="{{ id_block }}_{{loop.index}}"
           onclick="showImage(this.id)"
         />
-        {% endif %} {% endfor %}
+        {% endif %} 
+        {% endfor %}
       </div>
       {% endif %}
     </div>
+    {% endif %}
   </div>
   {% endfor %}
-
+</div>
   <div class="modal" tabindex="-1" id="modalWithImages">
     <div class="modal-dialog modal-xl">
       <div
@@ -162,5 +166,5 @@
     <label for="plus-button" id="plus"></label>
   </div>
   {% endif %}
-</div>
+
 {% endblock %}

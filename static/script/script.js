@@ -27,8 +27,8 @@ function showImage(id) {
     new_image.src = srces[i];
     new_image.classList.add("d-block");
 
-    new_image.style.width = "75vw";
-    new_image.style.height = "80vh";
+    new_image.style.width = "60vmin";
+    new_image.style.height = "60vmin";
     new_image.style.margin = "auto";
 
     new_item.appendChild(new_image);
