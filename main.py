@@ -88,7 +88,7 @@ def reviews():
         img = str(review.img).split(';')
         if img == ['']:
             img = []
-        a = {'name': name+' '+surname, 'rating': review.rating, 'text': review.text, 'images': img, 'user': review.user, 'id': review.id}
+        a = {'name': name, 'rating': review.rating, 'text': review.text, 'images': img, 'user': review.user, 'id': review.id}
         print(a)
         reviews.append(a)
         a = {}

@@ -84,7 +84,7 @@
   margin-left: calc(100vw - 220px) !important;
   top: 8vh !important;
   width:100%;
-  height: 110%;
+  /* height: 110%; */
   padding-top: 0 !important;
   --bs-dropdown-link-hover-bg: none !important
 }
@@ -113,7 +113,7 @@ main {
   background-color:#77B399;
   color: white;
   margin: 0;
-  width: 100%;
+  width: 98.5vw;
   max-width: none;
   position: absolute;
   margin-top: 60vh;
@@ -132,9 +132,10 @@ main {
   padding-top: 10%;
   background: url(../img/fon_page-0001.jpg), #1b4242;
   text-align: center;
-  border-radius: calc(5% + 30px);
+  border-radius: calc(3% + 29px);
   background-size: cover;
   margin-bottom: 75px;
+  margin-top: 5%;
 }
 
 .main-section-header {
@@ -169,10 +170,9 @@ main {
 
 .review {
   padding: 10px;
-  margin-left: 150px;
-  margin-right: 150px;
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: 30px;
-  margin-top: 4px;
   border-radius: 20px;
   background-color: #77B399;
 
@@ -180,6 +180,7 @@ main {
   height: 150px;
   display: flex;
   overflow: hidden;
+  width: 65vw;
 
   & > * {
     height: 100%;
@@ -208,10 +209,10 @@ main {
 }
 
 .review .images {
-  margin-left: 25px;
+  margin-left: auto;
   display: flex;
   flex-shrink: 0;
-  width: 90%px;
+  /* width: 90%px; */
   gap: 4px;
 
   img {
@@ -271,20 +272,25 @@ main {
 .review-page .review-header .rating {
   display: flex;
 }
-.review-page .review-header .rating label {
+.review-page .review-header .rating .stars label {
   margin-top: 5px;
   margin-left: 5px;
   width: 23px;
   height: 23px;
   margin-right: 5px;
 }
+.review-page .review-header .rating .stars {
+  position: absolute;
+  left: 70vw;
+  display: flex;
+}
 
-.review-header .rating .filled_images {
+.review-header .rating .stars .filled_images {
   background: url('../img/filled_star.png');
   background-size: cover;
 }
 
-.review-header .rating .hollow_images {
+.review-header .rating .stars .hollow_images {
   background: url('../img/star.png');
   background-size: cover;
 }
@@ -319,25 +325,34 @@ main {
 }
 
 
+
+
 /* ORDER */
 
+
+
+
+
 .order-container {
-  width: 60%;
+  width: 75%;
   border: 2px solid black;
   border-radius: 9px;
   margin-left: auto;
   margin-right: auto;
 }
 
-.order-container > .small-section > .row > .col-6 > input {
-  width: 80px;
+.order-container > .small-section > .row > * > input {
+  width: 25%;
   border-radius: 9px;
   border: 1.4px;
   text-align: center;
-  margin-left: 30px;
-  margin-top: 15px;
+  margin-left: 20%;
+  margin-top: 15%;
   background-color:#77B399;
   color: #1b4242;
+}
+.order-container > .small-section > .row > .h3 {
+  padding-left: 15%;
 }
 
 .order-container > .small-section {
@@ -358,25 +373,40 @@ main {
 
 #order-select-material {
   border-radius: 10px;
-  width: 287px;
-  height: 40px;
+  /* width: 287px; */
+  width: 60%;
+  height: 80%;
   text-align: center;
   margin-top: 15px;
   margin-right: 29px;
   background-color: #77B399;
+  border: none;
+  display: inline;
+  
+
+  option {
+    border-radius: 8px;
+  }
 }
+
 
 .order-color-radio {
   display: none;
 }
 
+.order-rating .stars-row{
+    /* margin-right: auto; */
+    width: 100%;
+}
+
 .order-color-label {
-  width: 30px;
-  height: 30px;
+  width: calc(25px + 15%);
+  height: calc(25px + 15%);
   border-radius: 5px;
   margin-right: 10px;
   cursor: pointer;
   border: 2px solid transparent;
+  /* gap: 100px; */
 }
 
 .order-color-label.selected {
