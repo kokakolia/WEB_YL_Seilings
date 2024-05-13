@@ -245,8 +245,8 @@ main {
 
 #plus {
   background: #1b4242;
-  height: 90px;
-  width: 14.5px;
+  height: 100%;
+  width: 13px;
   position: relative;
   border-radius: 8px;
   cursor: pointer;
@@ -255,12 +255,12 @@ main {
 
 #plus::after {
   content: "";
-  height: 15px;
-  width: 90px;
+  height: 13px;
+  width: calc(11vmax - 100% - 5vmin);
   background: #1b4242;
   position: absolute;
-  left: -38px;
-  top: 38px;
+  left: -3vmax;
+  top: 40%;
   border-radius: 8px;
 }
 
@@ -528,14 +528,14 @@ main {
 }
 
 #change-images {
-  width: 50%;
-  height: 35px;
+  width: 45vmin;
+  height: 6%;
   margin-bottom: 20px;
   background-color: green;
   border-radius: 10px;
   border:none;
-  font-size: 0.8rem;
-  color: white;
+  font-size: 100%;
+  color: rgb(208, 208, 208);
 }
 
 .modal-header .delete-in-change  label {
@@ -552,4 +552,9 @@ main {
 .carousel-inner .carousel-item img{
   width: 55vw;
   height: 70vh;
+}
+
+.exit-buttons {
+  margin-right: auto;
+  margin-left: auto;
 }

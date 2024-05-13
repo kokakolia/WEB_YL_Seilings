@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 {% if not changed %}
-<div class="change-review-form container text-center" style="width:40%;height: 100%;">
+<div class="change-review-form container text-center" style="width:70%;height: 100%;">
     <form method="post" style="width: 100%; height: 100%;" enctype="multipart/form-data" id="form-to-change">
         <div class="h3" style="margin-top: 0;margin-bottom: 10px;">Оставьте ваш отзыв</div>
         <div class="rating">
@@ -88,9 +88,13 @@
         
         
         
-        <div class="exit-buttons" style="display: flex;padding-bottom: 15px;">
-          <button onclick="postData()" style="background-color: rgb(8, 130, 22);border-radius: 8px;border:0px;color:rgb(181, 181, 181);margin-top: 30px;margin-right:10px;margin-left: 85px;height: 30px;">Сохранить</button>
-          <button type="button" onclick="redirect('/reviews')" style="background-color: rgb(8, 130, 22);border-radius: 8px;border:0px;color:rgb(181, 181, 181);margin-top: 30px;margin-left:10px;height: 30px;">Отменить</button>
+        <div class="exit-buttons row" style="padding-bottom: 15px;">
+          <div class="col-6 text-end">          
+            <button onclick="postData()" style="background-color: rgb(8, 130, 22);border-radius: 8px;border:0px;color:rgb(181, 181, 181);margin-top: 30px;margin-right:10px;height: 30px;">Сохранить</button>
+          </div>
+          <div class="col-6 text-start">
+            <button type="button" onclick="redirect('/reviews')" style="background-color: rgb(8, 130, 22);border-radius: 8px;border:0px;color:rgb(181, 181, 181);margin-top: 30px;margin-left:10px;height: 30px;">Отменить</button>
+          </div>
         </div>
     
 </div>
