@@ -47,9 +47,13 @@
             </p>
         {% endfor %}
     </p>
-    <p>{{ form.submit(type="submit", class="btn", style="font-size: larger") }}</p>
+    <p>{{ form.submit(type="submit", class="btn", style="font-size: small") }}</p>
     {% if message %}
         <div class="alert alert-danger" role="alert">{{message}}</div>
     {% endif %}
 </form>
+<div class="reg">
+    <span>Уже есть аккаунт?</span>
+    <a href="./login">Авторизация</a>
+</div>
 {% endblock %}
