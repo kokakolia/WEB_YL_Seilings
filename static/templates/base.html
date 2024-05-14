@@ -27,10 +27,10 @@
         <label id="user-button-label" for="user-button"></label>
         <ul class="dropdown-menu">
             {% if current_user.is_authenticated %}
-            <li><a class="dropdown-item" style="color:red" href="/logout">Выйти</a></li>
+            <li><a class="dropdown-item" style="color:red;margin-top: 10px;height: 65%;padding-bottom: 0;" href="/logout">Выйти</a></li>
             {% else %}
-            <li style="height: 65%;width: auto;font-size: 90%;"><a class="dropdown-item" href="/registration">Зарегистрироваться</a></li>
-            <li style="height: 75%;width: auto;font-size: 90%;"><a class="dropdown-item" href="/login">Логин</a></li>
+            <li style="height: 65%;width: auto;font-size: 90%;margin-top: 5px;"><a class="dropdown-item" href="/registration">Зарегистрироваться</a></li>
+            <li style="height: 65%;width: auto;font-size: 90%;padding-bottom: 0;"><a class="dropdown-item" href="/login">Логин</a></li>
             {% endif %}
         </ul>
     </div>
