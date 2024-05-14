@@ -63,11 +63,11 @@
                           {% for img in imgs %}
                           {% if loop.index == 1%}
                           <div class="carousel-item active">
-                            <img src="//127.0.0.1:8080/{{img}}">
+                            <img style="width: 60vmin;height: 60vmin;" src="//127.0.0.1:8080/{{img}}">
                           </div>
                           {% else %}
                           <div class="carousel-item">
-                            <img src="//127.0.0.1:8080/{{img}}">
+                            <img style="width: 60vmin;height: 60vmin;" src="//127.0.0.1:8080/{{img}}">
                           </div>
                           {% endif %}
                           {% endfor %}

@@ -92,34 +92,6 @@ def reviews():
     db_sess.close()
     return render_template('reviews.html', encoding='utf8', reviews=reviews, show=show)
 
-@app.route('/make_review', methods=['GET', 'POST'])
-@login_required
-def make_review():
-    if request.method == 'GET':
-        return render_template('/make_review.html', maden=False)
-    else:
-        stars = 6 - int(request.form['rating'])
-        text = request.form['text']
-        files = request.files.getlist('review_load_image')
-        data = []
-        for file in files:
-            if file.filename:
-                with open('static/users_img/'+file.filename, 'wb') as new_file:
-                    new_file.write(file.read())
-                data.append('static/users_img/'+file.filename)
-        db_sess = db_session.create_session()
-        review = Review()
-        review.text = text
-        review.rating = int(stars)
-        review.user = current_user
-        review.img = ';'.join(data)
-
-        current_user.reviews.append(review)
-        db_sess.merge(current_user)
-        db_sess.commit()
-        return render_template('/make_review.html', maden=True)
-
-
 @app.route('/order', methods=['GET', 'POST'])
 def order():
     if request.method == 'GET':
@@ -239,9 +211,9 @@ def change_review(id):
         new_files = []
         for file in files:
             if file.filename:
-                with open('static/users_img/'+file.filename, 'wb') as new_file:
+                with open('static/users_img/'+str(current_user.id)+"/"+file.filename, 'wb') as new_file:
                     new_file.write(file.read())
-                new_files.append('static/users_img/'+file.filename)
+                new_files.append('static/users_img/'+str(current_user.id)+"/"+file.filename)
                 
         
         p = []
@@ -267,9 +239,39 @@ def delete_review(id):
                 os.remove(img)
         db_sess.delete(review)
         db_sess.commit()
+        os.rmdir(f'static/users_img/{str(id)}')
     else:
         abort(404)
     return redirect('/reviews')    
+
+@app.route('/make_review', methods=['GET', 'POST'])
+@login_required
+def make_review():
+    if request.method == 'GET':
+        return render_template('/make_review.html', maden=False)
+    else:
+        stars = 6 - int(request.form['rating'])
+        text = request.form['text']
+        files = request.files.getlist('review_load_image')
+        data = []
+        os.mkdir('static/users_img/'+str(current_user.id))
+        for file in files:
+            if file.filename:
+                with open('static/users_img/'+str(current_user.id)+"/"+file.filename, 'wb') as new_file:
+                    new_file.write(file.read())
+                data.append('static/users_img/'+str(current_user.id)+"/"+file.filename)
+        db_sess = db_session.create_session()
+        review = Review()
+        review.text = text
+        review.rating = int(stars)
+        review.user = current_user
+        review.img = ';'.join(data)
+
+        current_user.reviews.append(review)
+        db_sess.merge(current_user)
+        db_sess.commit()
+        return render_template('/make_review.html', maden=True)
+
 
 if __name__ == '__main__':
     main()
