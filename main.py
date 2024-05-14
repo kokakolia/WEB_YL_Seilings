@@ -34,6 +34,8 @@ with app.app_context():
 users_info = {
 
 }
+if not os.path.exists('static/users_img'):
+    os.mkdir('static/users_img')
 
 
 def main():
