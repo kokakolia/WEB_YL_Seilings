@@ -48,18 +48,12 @@ def load_user(user_id):
 
 
 def setup_user(data):
-    surname = data['surname']
     name = data['name']
-    sex = data['sex']
-    b_day = data['b_day']
     email = data['email']
     password = data['pwd']
     db_sess = db_session.create_session()
     user = User(
-        surname=surname,
         name=name,
-        sex=sex,
-        b_day_date=b_day,
         email=email,
         password_hash=generate_password_hash(password),
     )
@@ -82,9 +76,9 @@ def logout():
 @app.route('/reviews')
 def reviews():
     db_sess = db_session.create_session()
-    res = db_sess.query(User.name, User.surname, Review).filter(User.id == Review.user_id)
+    res = db_sess.query(User.name, Review).filter(User.id == Review.user_id)
     reviews = []
-    for name, surname, review in res:
+    for name, review in res:
         img = str(review.img).split(';')
         if img == ['']:
             img = []
@@ -159,26 +153,27 @@ def reqister():
     form = RegisterForm()
     if form.validate_on_submit():
         if form.password.data != form.password_again.data:
+            print(1)
             return render_template('register.html', title='Регистрация',
                                    form=form,
                                    message="Пароли не совпадают")
         db_sess = db_session.create_session()
         if db_sess.query(User).filter(User.email == form.email.data).first():
+            print(2)
             return render_template('register.html', title='Регистрация',
                                    form=form,
                                    message="Такой пользователь уже есть")
         message.recipients = [form.email.data]
         user_info = {}
-        user_info['surname'] = form.surname.data
         user_info['name'] = form.name.data
-        user_info['sex'] = form.sex.data
-        user_info['b_day'] = form.b_day.data
         user_info['email'] = form.email.data
         user_info['pwd'] = form.password.data
         users_info[form.email.data] = user_info
         res = redirect('/verification')
         res.set_cookie(key='email', value=form.email.data, max_age=600)
+        print(3)
         return res
+    print(form.data, form.validate_on_submit)
     return render_template('register.html', title='Регистрация', form=form)
 
 
